@@ -1,7 +1,5 @@
-if [ "$PROFILE" = "minimal" ]; then
-  echo "Skipping DB (minimal profile)"
-  exit 0
-fi
+#!/usr/bin/env bash
+set -e
 
 DB_PASS=$(openssl rand -base64 24)
 
@@ -14,5 +12,3 @@ sed -i "s/password/$DB_PASS/" /var/www/wcp360/index.php
 
 echo "$DB_PASS" > /root/.wcp360-db
 chmod 600 /root/.wcp360-db
-
-register_rollback "mysql -e 'DROP DATABASE wcp360;'"
