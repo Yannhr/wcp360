@@ -1,25 +1,16 @@
 # ==============================================================================
-# WCP360 Rollback Handler
+# WCP360 Automatic Rollback Handler
 # ------------------------------------------------------------------------------
-# Provides automatic recovery on critical installation failure.
+# ROLE IN WCP360 ARCHITECTURE:
+#   Ensures transactional installation.
+#   Prevents partial deployment state.
 #
-# Responsibilities:
-#   - Stop partially installed services
-#   - Prevent broken runtime state
-#
-# Trigger:
-#   Automatically executed via trap ERR
-#
-# Limitations:
-#   - Does not revert OS-level package installation
-#   - Focuses on service consistency
-#
-# Security:
-#   - Ensures daemon not left exposed
+# TRIGGER:
+#   Automatically executed on any script error (trap ERR).
 # ==============================================================================
 rollback() {
-  echo "Critical failure. Rolling back..."
   systemctl stop wcp360 || true
   systemctl stop nginx || true
+  rm -rf /opt/wcp360 || true
 }
 trap rollback ERR

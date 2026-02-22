@@ -1,0 +1,9 @@
+01-system.sh
+02-core.sh
+03-api.sh
+04-panel.sh
+05-nginx.sh
+06-database.sh
+07-ssl.sh
+08-security.sh
+09-validate.sh

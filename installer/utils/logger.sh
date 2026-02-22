@@ -1,22 +1,23 @@
 # ==============================================================================
-# WCP360 Logger Utility
+# WCP360 JSON Logging Utility
 # ------------------------------------------------------------------------------
-# Handles centralized logging for the installer.
+# ROLE IN WCP360 ARCHITECTURE:
+#   Provides structured JSON logging for:
+#     - Audit trails
+#     - Debugging
+#     - Security analysis
 #
-# Responsibilities:
-#   - Initialize secure log file
-#   - Redirect stdout/stderr to log
-#   - Protect log file permissions (chmod 600)
-#
-# Log Location:
-#   /var/log/wcp360-install.log
-#
-# Security:
-#   - Sensitive data must never be echoed
+# OUTPUT:
+#   /var/log/wcp360-install.json (restricted permissions)
 # ==============================================================================
+
 init_logger() {
   mkdir -p /var/log
-  touch "$1"
-  chmod 600 "$1"
-  exec > >(tee -a "$1") 2>&1
+  touch /var/log/wcp360-install.json
+  chmod 600 /var/log/wcp360-install.json
+}
+
+log_json() {
+  echo "{\"timestamp\":\"$(date -Iseconds)\",\"level\":\"$1\",\"message\":\"$2\"}" \
+  >> /var/log/wcp360-install.json
 }
