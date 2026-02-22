@@ -1,3 +1,13 @@
+# ==============================================================================
+# WCP360 Systemd Service Unit
+# ------------------------------------------------------------------------------
+# Runs WCP360 daemon as isolated system user.
+#
+# Security:
+#   - Runs under wcp user
+#   - Automatic restart
+#   - Network dependency enforced
+# ==============================================================================
 [Unit]
 Description=WCP360 Daemon
 After=network.target

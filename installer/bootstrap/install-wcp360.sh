@@ -1,4 +1,34 @@
 #!/usr/bin/env bash
+#!/usr/bin/env bash
+# ==============================================================================
+# WCP360 Bootstrap Installer
+# ------------------------------------------------------------------------------
+# Version: 1.0.0
+# Description:
+#   Main orchestration entrypoint for WCP360 installation.
+#   Executes modular installation phases in a strict, controlled sequence.
+#
+# Responsibilities:
+#   - Load utilities
+#   - Enforce root execution
+#   - Validate OS compatibility
+#   - Execute atomic installation steps
+#   - Trigger rollback on failure
+#   - Log installation progress
+#
+# Security:
+#   - Uses set -euo pipefail
+#   - No plaintext credentials
+#   - Centralized logging
+#   - Mandatory reverse proxy enforcement
+#
+# WARNING:
+#   This script modifies system configuration and installs services.
+#   Use only on fresh production servers.
+#
+# Project: WCP360
+# License: See LICENSE file
+# ==============================================================================
 set -euo pipefail
 
 BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
