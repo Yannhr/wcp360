@@ -1,0 +1,14 @@
+[Unit]
+Description=WCP360 Core
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/wcp360
+ExecStart=/opt/wcp360/wcpd
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
