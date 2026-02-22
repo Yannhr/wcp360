@@ -1,0 +1,12 @@
+[Unit]
+Description=WCP360 Daemon
+After=network.target
+
+[Service]
+User=wcp
+Group=wcp
+ExecStart=/opt/wcp360/bin/wcpd
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
