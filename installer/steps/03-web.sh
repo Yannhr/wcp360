@@ -1,17 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Installing Nginx and PHP..."
+
+apt install -y nginx php php-fpm php-mysql php-curl php-mbstring
+
+systemctl enable nginx
+systemctl enable php-fpm
+
 mkdir -p /var/www/wcp360
 chown -R www-data:www-data /var/www/wcp360
 
-cat > /var/www/wcp360/index.php <<PHP
+cat > /var/www/wcp360/index.php <<'PHP'
 <?php
 echo "<h1 style='color:#00d4ff;text-align:center;margin-top:100px;font-family:Arial'>🚀 WCP360 Installed Successfully</h1>";
-echo "<p style='text-align:center'>PHP is working.</p>";
-
-\$conn = @new mysqli("localhost", "wcp360", "password", "wcp360");
-if (\$conn->connect_error) {
-    echo "<p style='text-align:center;color:red'>Database not yet configured.</p>";
-} else {
-    echo "<p style='text-align:center;color:green'>Database connection OK.</p>";
-}
+echo "<p style='text-align:center'>PHP version: " . phpversion() . "</p>";
 ?>
 PHP
 
@@ -28,7 +31,7 @@ server {
 
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+        fastcgi_pass unix:/run/php/php-fpm.sock;
     }
 
     server_tokens off;
