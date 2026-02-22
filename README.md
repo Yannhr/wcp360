@@ -21,48 +21,98 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>cPanel</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Plesk</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>CyberPanel</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>HestiaCP</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:paragraph -->
 <p>But built with:</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>⚡ Performance-first architecture</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>🔐 Security-by-default design</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>🧩 Modular core</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>☁️ Cloud-ready scalability</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>🐧 Pure Linux-native foundation</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:separator --><hr class="wp-block-separator has-alpha-channel-opacity" /><!-- /wp:separator -->
 
@@ -75,37 +125,71 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>Faster</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>More secure</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Lightweight</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Fully modular</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Linux-native</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Cloud-scalable</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:paragraph -->
 <p>control platform engineered for modern infrastructure.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>WCP 360 is not a legacy hosting panel.<br />It is an infrastructure control layer designed for serious server operators.</p>
+<p>WCP 360 is not a legacy hosting panel. It is an infrastructure control layer designed for serious server operators.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:separator --><hr class="wp-block-separator has-alpha-channel-opacity" /><!-- /wp:separator -->
@@ -123,83 +207,159 @@
 <!-- /wp:heading -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>Low footprint</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Smart CPU/RAM allocation</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Minimal overhead</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>High density hosting</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:heading -->
 <h2 class="wp-block-heading">🏢 Dedicated Servers</h2>
 <!-- /wp:heading -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>Hardware-level optimization</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Advanced MariaDB tuning</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>High I/O workloads</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Enterprise-grade security</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:heading -->
 <h2 class="wp-block-heading">☁️ Cloud &amp; Scalable Instances</h2>
 <!-- /wp:heading -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>API-first architecture</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Cluster-ready roadmap</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Multi-node orchestration (planned)</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Infrastructure automation compatibility</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:heading -->
 <h2 class="wp-block-heading">🐧 Supported OS</h2>
 <!-- /wp:heading -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>Ubuntu LTS</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Debian Stable</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:paragraph -->
-<p>Linux-native.<br />No abstraction layers.<br />No bloated compatibility overhead.</p>
+<p>Linux-native. No abstraction layers. No bloated compatibility overhead.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:separator --><hr class="wp-block-separator has-alpha-channel-opacity" /><!-- /wp:separator -->
@@ -217,60 +377,128 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>Immutable</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Hardened</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Event-driven</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Fully extensible</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading">Core Responsibilities</h3>
 <!-- /wp:heading -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>User &amp; domain lifecycle management</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Resource isolation (cgroups v2 + systemd slices)</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Dynamic Nginx config generation</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>SSL automation (ACME v2)</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>WAF integration (Coraza + OWASP CRS v4)</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>API Gateway (REST + optional GraphQL)</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Plugin management system</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Security enforcement</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:paragraph -->
 <p>No business logic is hardcoded.</p>
@@ -368,46 +596,104 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>User isolation via cgroups v2</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Per-user CPU/RAM/IO quotas</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>WAF (Coraza + OWASP CRS auto-update)</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Redis-based abuse detection</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Centralized ban engine</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Immutable audit logs</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Mandatory 2FA for admin</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>WebAuthn support</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>SELinux/AppArmor profiles</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Automatic hardening on install</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:paragraph -->
 <p>Zero-trust architecture.</p>
@@ -428,38 +714,84 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>Nginx-only default stack</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>FastCGI global caching</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Redis object cache</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Multi-PHP-FPM pools</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Brotli compression</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>HTTP/3 enabled</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>MariaDB auto-tuned based on RAM</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Lazy service loading</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:paragraph -->
 <p>Designed to remain lightweight even with 500+ domains.</p>
@@ -476,30 +808,64 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>cgroups v2</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>systemd slices</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>CPUQuota</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>MemoryHigh / MemoryMax</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>IO weight</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Task limits (anti fork-bomb)</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:paragraph -->
 <p>Dynamic quota per hosting plan.</p>
@@ -516,38 +882,84 @@
 <!-- /wp:heading -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>CLI management (<code>wcp360</code> command)</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Full REST API</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>WebSocket real-time updates</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Git-based deployment</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>CI/CD hooks</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>SDK for module development</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Infrastructure export/import</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Container integration (Docker / Podman optional module)</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:separator --><hr class="wp-block-separator has-alpha-channel-opacity" /><!-- /wp:separator -->
 
@@ -560,18 +972,34 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>Per-site resource tracking</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Energy consumption metrics</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>CO₂ estimation via CPU metrics</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:paragraph -->
 <p>Built for efficient infrastructure usage.</p>
@@ -593,9 +1021,8 @@
 
 <!-- wp:paragraph -->
 <p>Stay tuned.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:separator --><hr class="wp-block-separator has-alpha-channel-opacity" /><!-- /wp:separator -->
+<blockquote><strong><span class="ͼd">git</span> clone https://github.com/Yannhr/wcp360.git</strong><br /><strong><span class="ͼd">cd</span> wcp360/installer</strong><br /><strong><span class="ͼd">chmod</span> <span class="ͼ8">+</span>x install-wcp360.sh</strong><br /><strong><span class="ͼd">sudo</span> ./install-wcp360.sh</strong></blockquote>
+<hr class="wp-block-separator has-alpha-channel-opacity" /><!-- /wp:separator -->
 
 <!-- wp:heading {"level":1} -->
 <h1 class="wp-block-heading">🤝 Contributing</h1>
@@ -610,52 +1037,108 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>Backend developers</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Frontend developers</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Security engineers</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>DevOps specialists</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Documentation contributors</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Plugin developers</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:heading -->
 <h2 class="wp-block-heading">How to Contribute</h2>
 <!-- /wp:heading -->
 
 <!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list">
+<li style="list-style-type: none;">
 <ol class="wp-block-list"><!-- wp:list-item -->
 <li>Fork the repository</li>
+</ol>
+</li>
+</ol>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ol class="wp-block-list">
+<li style="list-style-type: none;">
+<ol class="wp-block-list">
 <li>Create a feature branch</li>
+</ol>
+</li>
+</ol>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ol class="wp-block-list">
+<li style="list-style-type: none;">
+<ol class="wp-block-list">
 <li>Submit a pull request</li>
+</ol>
+</li>
+</ol>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ol class="wp-block-list">
+<li style="list-style-type: none;">
+<ol class="wp-block-list">
 <li>Join discussions</li>
-<!-- /wp:list-item --></ol>
-<!-- /wp:list -->
+</ol>
+</li>
+</ol>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:paragraph -->
 <p>We aim to build a serious, long-term open infrastructure project.</p>
@@ -680,22 +1163,44 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>The core remains open-source</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>No closed fork can privatize it</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Commercial hosting is allowed</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Paid modules can coexist separately</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:separator --><hr class="wp-block-separator has-alpha-channel-opacity" /><!-- /wp:separator -->
 
@@ -704,42 +1209,94 @@
 <!-- /wp:heading -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>Core engine MVP</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Web server module</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Database module</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Email module</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Backup module</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>API v1 stable</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Plugin registry</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Cluster mode (beta)</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Public SDK</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:separator --><hr class="wp-block-separator has-alpha-channel-opacity" /><!-- /wp:separator -->
 
@@ -752,30 +1309,64 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>Transparent</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Modular</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Secure</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Efficient</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Developer-friendly</li>
+</ul>
+</li>
+</ul>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<ul class="wp-block-list">
+<li style="list-style-type: none;">
+<ul class="wp-block-list">
 <li>Scalable</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+</ul>
+</li>
+</ul>
+<!-- /wp:list-item --><!-- /wp:list -->
 
 <!-- wp:paragraph -->
 <p>Not bloated.</p>
