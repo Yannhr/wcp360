@@ -1,8 +1,5 @@
-ufw default deny incoming
-ufw allow OpenSSH
-ufw allow 80
-ufw allow 443
-ufw --force enable
+ufw allow OpenSSH || true
+ufw allow 80 || true
+ufw allow 443 || true
+ufw --force enable || true
 systemctl enable fail2ban
-sed -i 's/^#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
-systemctl reload ssh

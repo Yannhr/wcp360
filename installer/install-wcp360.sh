@@ -1,51 +1,74 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VERSION="3.0.0"
+VERSION="5.1.0"
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-LIB_DIR="$BASE_DIR/lib"
 STEPS_DIR="$BASE_DIR/steps"
 
 PROFILE="full"
-AUTO=false
+DOMAIN=""
 LOG_FILE="/var/log/wcp360-install.log"
+ROLLBACK_ACTIONS=()
 
 for arg in "$@"; do
   case $arg in
     --profile=*) PROFILE="${arg#*=}" ;;
-    --auto) AUTO=true ;;
+    --domain=*) DOMAIN="${arg#*=}" ;;
   esac
 done
 
-source "$LIB_DIR/ui.sh"
-source "$LIB_DIR/logger.sh"
-source "$LIB_DIR/system.sh"
-source "$LIB_DIR/progress.sh"
-source "$LIB_DIR/profiles.sh"
+log() {
+  echo "$(date '+%F %T') - $1" | tee -a "$LOG_FILE"
+}
 
-init_logger "$LOG_FILE"
-require_root
-check_os
-check_internet
+register_rollback() {
+  ROLLBACK_ACTIONS+=("$1")
+}
 
-print_banner "WCP360 Installer v$VERSION"
-print_info "Profile: $PROFILE"
+rollback() {
+  log "⚠ Rolling back..."
+  for (( i=${#ROLLBACK_ACTIONS[@]}-1 ; i>=0 ; i-- )); do
+    eval "${ROLLBACK_ACTIONS[$i]}" || true
+  done
+}
 
-if [ "$AUTO" = false ]; then
-  read -rp "Proceed? (y/n): " CONFIRM
-  [[ "$CONFIRM" == "y" ]] || exit 0
-fi
+trap rollback ERR
 
-STEPS=($(get_profile_steps "$PROFILE"))
-TOTAL=${#STEPS[@]}
+[ "$EUID" -eq 0 ] || { echo "Run as root"; exit 1; }
+grep -qiE "ubuntu|debian" /etc/os-release || { echo "Unsupported OS"; exit 1; }
+
+clear
+echo "================================================="
+echo "     WCP360 PROFESSIONAL INSTALLER v$VERSION"
+echo "================================================="
+echo "Profile: $PROFILE"
+echo ""
+
+read -rp "Proceed with installation? (y/n): " CONFIRM
+[[ "$CONFIRM" == "y" ]] || exit 0
+
+export PROFILE
+export DOMAIN
+export LOG_FILE
+export -f log
+export -f register_rollback
+
+TOTAL=$(ls "$STEPS_DIR"/*.sh | wc -l)
 COUNT=0
 
-for STEP in "${STEPS[@]}"; do
+for STEP in $(ls "$STEPS_DIR"/*.sh | sort); do
   COUNT=$((COUNT+1))
-  print_step "$COUNT" "$TOTAL" "$STEP"
-  bash "$STEPS_DIR/$STEP"
-  progress_bar "$COUNT" "$TOTAL"
-  print_success "$STEP completed"
+  echo ""
+  echo "-------------------------------------------------"
+  echo " STEP $COUNT/$TOTAL - $(basename "$STEP")"
+  echo "-------------------------------------------------"
+  bash "$STEP"
 done
 
-print_success "Installation completed successfully"
+IP=$(hostname -I | awk '{print $1}')
+echo ""
+echo "================================================="
+echo "Installation Completed Successfully"
+echo "Access: http://$IP"
+[ -n "$DOMAIN" ] && echo "HTTPS: https://$DOMAIN"
+echo "================================================="
