@@ -75,26 +75,26 @@ There are many ways to contribute to WCP 360.
 Even small documentation fixes are valuable.
 
 ---
+## How to contribute
 
-# 🚀 Getting Started
+1. Fork & clone the repo
+2. Create a branch: `git checkout -b feat/xxx` or `fix/xxx`
+3. Make your changes
+4. Add tests if relevant (go test, pnpm test)
+5. Commit with conventional style: `type(scope): message`  
+   Exemples: `fix(readme): correct clone url`, `docs(readme): add badges`, `feat(cli): add version command`
+6. Push & open a PR against main
 
-## 1️⃣ Fork the Repository
-
-Click **Fork** on GitHub.
-
-## 2️⃣ Clone Your Fork
-
-```bash
-git clone https://github.com/Webcontrolpanel360/wcp360.git
-cd wcp360
-```
-
-## 3️⃣ Create a Feature Branch
+## Development setup
 
 ```bash
-git checkout -b feature/my-feature-name
-```
+# Backend
+go mod tidy
+go build ./cmd/...
 
+# Frontend
+pnpm install
+pnpm dev
 Branch naming examples:
 
 - `feature/web-server-module`
@@ -330,3 +330,4 @@ Every contribution matters.
 Even a documentation typo helps.
 
 Let’s build something serious.
+
