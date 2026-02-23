@@ -75,6 +75,7 @@ There are many ways to contribute to WCP 360.
 Even small documentation fixes are valuable.
 
 ---
+
 ## How to contribute
 
 1. Fork & clone the repo
@@ -84,6 +85,8 @@ Even small documentation fixes are valuable.
 5. Commit with conventional style: `type(scope): message`  
    Exemples: `fix(readme): correct clone url`, `docs(readme): add badges`, `feat(cli): add version command`
 6. Push & open a PR against main
+
+---
 
 ## Development setup
 
@@ -330,4 +333,5 @@ Every contribution matters.
 Even a documentation typo helps.
 
 Let’s build something serious.
+
 
