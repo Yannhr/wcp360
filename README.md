@@ -36,6 +36,39 @@ Built with:
 - ☁️ Cloud-ready scalability  
 - 🐧 Pure Linux-native foundation  
 
+
+
+## 🧩 Tech Stack Overview
+
+### ⚙ Core Layer
+[![Go](https://img.shields.io/badge/Core-Go-00ADD8?logo=go&logoColor=white)](https://go.dev/)
+[![Rust](https://img.shields.io/badge/Security-Rust-black?logo=rust&logoColor=white)](https://www.rust-lang.org/)
+
+### 🌐 Interface Layer
+[![React](https://img.shields.io/badge/UI-React-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Node.js](https://img.shields.io/badge/Runtime-Node.js-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+
+### 🗄 Data Layer
+[![MariaDB](https://img.shields.io/badge/Database-MariaDB-003545?logo=mariadb&logoColor=white)](https://mariadb.org/)
+[![Redis](https://img.shields.io/badge/Cache-Redis-DC382D?logo=redis&logoColor=white)](https://redis.io/)
+
+### 🌍 Infrastructure Layer
+[![Nginx](https://img.shields.io/badge/Web%20Server-Nginx-009639?logo=nginx&logoColor=white)](https://nginx.org/)
+[![PHP-FPM](https://img.shields.io/badge/PHP-FPM-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![Containers](https://img.shields.io/badge/Containers-Podman-892CA0?logo=podman&logoColor=white)](https://podman.io/)
+[![Rootless](https://img.shields.io/badge/Mode-Rootless-success)]()
+[![Quadlet](https://img.shields.io/badge/Orchestration-Quadlet-blue)]()
+[![Systemd](https://img.shields.io/badge/Integration-systemd-444444)]()
+
+### 🔐 Security Layer
+[![Coraza](https://img.shields.io/badge/WAF-Coraza-red)](https://coraza.io/)
+[![OWASP CRS](https://img.shields.io/badge/OWASP-CRS-critical)](https://owasp.org/www-project-modsecurity-core-rule-set/)
+
+### 📦 Packaging
+[![OCI-like](https://img.shields.io/badge/Modules-OCI--like-blueviolet)]()
+[![Signed Manifests](https://img.shields.io/badge/Integrity-Signed%20Manifests-success)]()
+
+
 ---
 
 # 🎯 Mission
