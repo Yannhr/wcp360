@@ -314,15 +314,65 @@ Ensuring:
 
 # 🛣 Roadmap (2026)
 
-- Core engine MVP  
-- Web server module  
-- Database module  
-- Email module  
-- Backup module  
-- API v1 stable  
-- Plugin registry  
-- Cluster mode (beta)  
-- Public SDK  
+WCP 360 aims to become a modern, modular, secure, and performant open-source alternative to legacy control panels. Development is phased to deliver a usable MVP early, then expand into a full ecosystem.
+
+### Phase 1 – Foundation & Core MVP (Q1 2026 – Priority Now)
+Deliver a minimal, secure, testable core engine that powers the entire platform.
+
+- **Core Engine MVP**  
+  - Event-driven architecture (internal bus + Redis pub/sub)  
+  - User & domain lifecycle management  
+  - Resource isolation & quotas (cgroups v2 + systemd slices – native LVE alternative)  
+  - Security foundation: mandatory 2FA/WebAuthn, Coraza WAF + OWASP CRS, no-root execution, abuse detection, immutable audit logs  
+  - Configuration system (YAML/TOML) + first installer script (`install-wcp360.sh`)  
+  - Basic REST API + WebSocket for real-time updates  
+  - **CLI tool (`wcp360`) powered by Cobra**  
+    - Base commands: `version`, `init`, `status`, `help`  
+    - Modular subcommands: `webserver`, `module`, `user`, etc.  
+    - Shell auto-completion, dry-run flags, verbose mode  
+
+- **Basic Testing & CI**  
+  - Unit/integration tests for core  
+  - GitHub Actions: lint (golangci-lint), build, test on push/PR  
+
+### Phase 2 – Essential Modules & Web Interface (Q2 2026)
+Build the first production-usable features with a modern UI.
+
+- **Web Server Module** (Nginx-first)  
+  - Dynamic config generation & reload  
+  - Multi-PHP-FPM pools  
+  - HTTP/3 (QUIC), Brotli compression, FastCGI + Redis caching  
+  - SSL automation (ACME/Let's Encrypt)  
+
+- **Database Module** (MariaDB + PostgreSQL)  
+- **Email Module** (Postfix, Dovecot, Rspamd, Roundcube webmail)  
+- **Backup Module** (incremental, local/S3, Restic-based)  
+- **Web Panel (Frontend)**  
+  - React/Next.js + TypeScript + Tailwind/shadcn-ui  
+  - Responsive dashboard, dark mode, login + 2FA setup  
+  - Real-time updates via WebSocket  
+
+### Phase 3 – Ecosystem & Stability (Q3–Q4 2026)
+Mature the platform into a full hosting solution.
+
+- **API v1 Stable** + OpenAPI/Swagger documentation  
+- **DNS Module** (PowerDNS or BIND)  
+- **Plugin/Module Registry** (official marketplace for installable modules)  
+- **Public SDK** (Go + TypeScript/JavaScript libraries for custom modules & integrations)  
+- **Cluster Mode (beta)** – multi-node support, high availability, load balancing  
+
+### Phase 4 – Production-Ready & Beyond (Late 2026 → 2027)
+Polish, harden, and scale for real-world adoption.
+
+- Advanced Monitoring & Logging (Prometheus + Grafana integration)  
+- Automated updates & rolling releases  
+- Comprehensive Documentation (Docusaurus/MkDocs site + video tutorials)  
+- Packaging: official DEB/RPM, Docker images, AppImage  
+- Security: external audit, Dependabot alerts, signed commits/releases  
+- Mobile support: Progressive Web App (PWA)  
+- Energy & sustainability tracking (per-site CO₂ metrics)  
+- Commercial ecosystem: allow paid/premium modules under AGPL  
+ 
 
 ---
 
