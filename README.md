@@ -23,6 +23,12 @@ It is:
 - A complete server management solution  
 - A modular software platform for administering web infrastructure  
 
+Full detailed roadmap → [ROADMAP.md](ROADMAP.md)  
+Architecture & invariants → [ARCHITECTURE.md](ARCHITECTURE.md)  
+Key features list → [FEATURES.md](FEATURES.md) (if exists)  
+Installation guide → [INSTALLATION.md](INSTALLATION.md) or docs/ folder  
+Security hardening tips → [HARDENING.md](HARDENING.md)
+
 WCP 360 is built for modern environments and combines:
 
 - Hosting management  
@@ -138,7 +144,7 @@ No compatibility bloat.
 
 # 🏗 Architecture Overview
 
-## 🧠 Minimal Core (< 50MB installed)
+## 🧠 Minimal Core
 
 The core is:
 
@@ -312,17 +318,62 @@ Ensuring:
 
 ---
 
-# 🛣 Roadmap (2026)
+## Project Roadmap – 2026 Vision
 
-- Core engine MVP  
-- Web server module  
-- Database module  
-- Email module  
-- Backup module  
-- API v1 stable  
-- Plugin registry  
-- Cluster mode (beta)  
-- Public SDK  
+WCP360 is in **early alpha** (February 2026) with a strong focus on solid architecture, documentation, and secure bootstrap foundations.
+
+We are building step-by-step toward a modern, secure, multi-tenant hosting control panel in Go.
+
+### High-Level 2026 Roadmap
+
+**Phase 0: Foundation & Bootstrap** (Q1 2026 – In progress)  
+- Repository setup, licensing, governance  
+- Detailed architecture & invariants  
+- One-click installer skeleton  
+- Secure first-boot (PAM root → admin auto-creation)  
+- Docker Compose dev environment  
+
+**Phase 1: Core Engine MVP** (Q1–Q2 2026)  
+- Job engine (idempotent, retries, scheduling)  
+- Centralized audit logging  
+- Strict tenant context & RBAC enforcement  
+- Resource quotas (cgroups v2)  
+- Basic API endpoints + health/metrics  
+
+**Phase 2: First Modules & Provisioning** (Q2–Q3 2026)  
+- Webserver module (Nginx: vhosts, templates, reload)  
+- SSL module (Let's Encrypt auto-issue & renew)  
+- Database module basics  
+- Demo/quick-start hosting package  
+- Real-time WebSocket updates  
+
+**Phase 3: Essential Features & UI Alpha** (Q3–Q4 2026)  
+- Email, backup, DNS modules  
+- Admin UI (React/Vite/shadcn)  
+- Client panel basics  
+- Full CLI mirroring API  
+- Rate limiting, 2FA support  
+
+**Phase 4: Hardening & Beta** (Q4 2026 → 2027)  
+- Stable API v1 + OpenAPI  
+- Advanced isolation (SELinux/AppArmor)  
+- Monitoring (Prometheus)  
+- Public beta & community modules  
+
+Longer-term: reconciliation loop, multi-server, green hosting metrics, enterprise SSO…
+
+**Current focus (Feb 2026):**  
+Secure bootstrap + job engine + first module (Nginx/SSL) + curl | bash installer
+
+Full detailed roadmap → [ROADMAP.md](ROADMAP.md)  
+Architecture & invariants → [ARCHITECTURE.md](ARCHITECTURE.md)  
+Key features list → [FEATURES.md](FEATURES.md) (if exists)  
+Installation guide → [INSTALLATION.md](INSTALLATION.md) or docs/ folder  
+Security hardening tips → [HARDENING.md](HARDENING.md)
+
+Contributions welcome – start small (docs, tests, small modules)!
+
+⭐ Star the repo • Watch for updates • Join Discussions to help shape the project.
 
 ---
 
