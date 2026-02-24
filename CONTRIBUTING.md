@@ -22,316 +22,65 @@ It is a long-term infrastructure project built for serious server operators.
 
 All contributions should respect these principles.
 
----
+# 🌿 Branch Naming Convention
 
-# 🧭 Ways to Contribute
-
-There are many ways to contribute to WCP 360.
-
-## 💻 Backend (Go)
-
-- Core engine improvements  
-- REST API development  
-- Isolation engine (cgroups v2 / systemd slices)  
-- Module system architecture  
-- Security hardening  
-- Performance optimization  
-
-## 🎨 Frontend (React + TypeScript)
-
-- UI improvements  
-- Dashboard components  
-- UX enhancements  
-- Admin / Client interfaces  
-- Webmail integration layer  
-- Accessibility improvements  
-
-## 🔐 Security
-
-- Threat modeling  
-- Attack surface review  
-- WAF integration improvements  
-- Abuse detection logic  
-- Code auditing  
-- Privilege boundary validation  
-
-## 🧪 Testing
-
-- Unit tests  
-- Integration tests  
-- Load testing  
-- Performance benchmarks  
-- Security validation tests  
-
-## 📚 Documentation
-
-- README improvements  
-- API documentation  
-- Installation guides  
-- Architecture diagrams  
-- Tutorials  
-- Translations  
-
-Even small documentation fixes are valuable.
+To keep **WCP360** organized, scalable, and easy to navigate for all contributors, we follow a strict branching convention. Adhering to these rules ensures a clean commit history and smoother Pull Requests.
 
 ---
 
-## How to contribute
+### 📝 General Rules
 
-1. Fork & clone the repo
-2. Create a branch: `git checkout -b feat/xxx` or `fix/xxx`
-3. Make your changes
-4. Add tests if relevant (go test, pnpm test)
-5. Commit with conventional style: `type(scope): message`  
-   Exemples: `fix(readme): correct clone url`, `docs(readme): add badges`, `feat(cli): add version command`
-6. Push & open a PR against main
+* **Kebab-case only**: Always use lowercase letters.
+* **Hyphen separated**: Use dashes (`-`) to separate words (no spaces, no underscores).
+* **Mandatory Prefix**: Every branch must start with a category prefix followed by a slash `/`.
+* **Descriptive & Concise**: Aim for 5–50 characters. It should be readable at a glance.
 
 ---
 
-## Development setup
+### 🛠️ Recommended Prefixes
 
-```bash
-# Backend
-go mod tidy
-go build ./cmd/...
-
-# Frontend
-pnpm install
-pnpm dev
-Branch naming examples:
-
-- `feature/web-server-module`
-- `fix/nginx-config-bug`
-- `security/isolation-improvement`
-- `docs/api-update`
+| Prefix | Use Case | Examples |
+| :--- | :--- | :--- |
+| `feature/` | New functionality or major evolution. | `feature/core-minimal`, `feature/nginx-module` |
+| `bugfix/` | Fixing a bug in the code. | `bugfix/jwt-expiration`, `bugfix/db-connection-leak` |
+| `refactor/` | Code improvements without changing behavior. | `refactor/config-loader`, `refactor/error-handling` |
+| `docs/` | Documentation updates or additions. | `docs/add-code-of-conduct`, `docs/update-roadmap` |
+| `chore/` | Maintenance, CI/CD, dependencies, or formatting. | `chore/github-actions-ci`, `chore/update-deps` |
+| `hotfix/` | Urgent production fixes (rare/critical). | `hotfix/security-patch-api` |
+| `experiment/` | Research, PoC, or temporary testing. | `experiment/redis-pubsub` |
 
 ---
 
-# 🏗 Development Setup
+### ✅ Good vs. ❌ Bad Examples
 
-## Backend (Go)
-
-Install dependencies and build:
-
-```bash
-go mod tidy
-make build
-make dev
-```
-
-Backend runs on:
-
-```
-http://localhost:8080
-```
-
-Health endpoint:
-
-```
-/health
-```
+* ❌ `feature/Core-Minimal` (Uppercase/Mixed) → ✅ **`feature/core-minimal`**
+* ❌ `bugfix/fix jwt bug` (Spaces) → ✅ **`bugfix/jwt-token-expiration`**
+* ❌ `docs/code` (Too vague) → ✅ **`docs/update-contributing-guide`**
+* ❌ `123-fix` (Starting with numbers) → ✅ **`bugfix/issue-123-ui-alignment`**
 
 ---
 
-## Frontend (Panel)
+### 🔄 Recommended Workflow
 
-```bash
-cd panel
-pnpm install
-pnpm dev
-```
 
-Frontend runs on:
 
-```
-http://localhost:5173
-```
+1.  **Sync your local environment**:
+    ```bash
+    git checkout main
+    git pull origin main
+    ```
 
----
+2.  **Create your branch with the correct prefix**:
+    ```bash
+    git checkout -b feature/core-minimal-api
+    ```
 
-# 🧪 Code Standards
+3.  **Push and track the branch on GitHub**:
+    ```bash
+    git push -u origin feature/core-minimal-api
+    ```
 
-## Go Guidelines
-
-- Follow idiomatic Go  
-- Keep functions small and focused  
-- Avoid unnecessary abstractions  
-- Avoid global state  
-- Always handle errors explicitly  
-- Prefer composition over inheritance patterns  
-- Write unit tests whenever possible  
-
-Formatting:
-
-```bash
-go fmt ./...
-```
-
-Linting (recommended):
-
-```bash
-golangci-lint run
-```
+4.  **Open a Pull Request (PR)**:
+    Once your work is ready, open a PR from your branch to `main`. Ensure your branch name follows the convention above to speed up the review process.
 
 ---
-
-## Frontend Guidelines
-
-- Use strict TypeScript  
-- Avoid `any`  
-- Keep components small and composable  
-- Prefer hooks over class components  
-- No business logic in presentation components  
-- Separate UI from API calls  
-
-Formatting:
-
-```bash
-pnpm lint
-```
-
----
-
-# 🔐 Security Requirements
-
-WCP 360 is infrastructure software. Security is mandatory.
-
-- No unsafe shell execution  
-- No silent privilege escalation  
-- No root execution from the UI layer  
-- All destructive operations must require explicit confirmation  
-- Isolation logic must be testable  
-- Sensitive changes require review  
-
-Security-related pull requests are reviewed carefully.
-
----
-
-# 📦 Module Contributions
-
-Modules must:
-
-- Not modify the core directly  
-- Respect the defined module API  
-- Be independently installable  
-- Avoid tight coupling with other modules  
-- Include documentation  
-
-Planned module packaging format: `.wcp`
-
-The ecosystem must grow without bloating the core.
-
----
-
-# 📝 Commit Message Convention
-
-Use clear, conventional commit messages:
-
-```
-feat: add nginx config generator
-fix: correct cgroup memory limit
-docs: update installation guide
-security: prevent privilege escalation in API
-refactor: simplify domain lifecycle handler
-```
-
-Guidelines:
-
-- Keep commits atomic  
-- Keep messages clear and descriptive  
-- Avoid unrelated changes in one commit  
-
----
-
-# 🔄 Pull Request Process
-
-Before opening a PR:
-
-- Ensure your branch is up to date with `main`
-- Run formatting and linting
-- Ensure the project builds successfully
-- Run tests if applicable
-
-When opening a PR, clearly describe:
-
-- What you changed  
-- Why you changed it  
-- Any breaking changes  
-- Screenshots (if frontend changes)  
-
-PRs may be reviewed for:
-
-- Security impact  
-- Architectural consistency  
-- Performance implications  
-- Maintainability  
-
----
-
-# 🧠 Roadmap Alignment
-
-Before implementing large features:
-
-1. Open an issue  
-2. Discuss architecture  
-3. Align with project direction  
-
-We prioritize:
-
-- Core stability  
-- Security  
-- Modularity  
-- Clean architecture  
-
-Unaligned large PRs may be rejected.
-
----
-
-# 🏆 Good First Issues
-
-If you are new to the project, look for:
-
-- Documentation improvements  
-- Minor refactors  
-- Test coverage improvements  
-- Small UI enhancements  
-
-Beginner-friendly issues will be labeled accordingly.
-
----
-
-# 📜 Code of Conduct
-
-- Be respectful  
-- No toxic behavior  
-- Constructive technical discussions only  
-- Focus on infrastructure quality  
-
-We aim to build a professional open-source environment.
-
----
-
-# 🌱 Long-Term Vision
-
-WCP 360 aims to become:
-
-- A serious alternative to legacy hosting panels  
-- A secure Linux-native infrastructure control layer  
-- A modular ecosystem  
-- A sustainable open-source project  
-
-If you believe hosting infrastructure deserves better tools —
-
-You are welcome here.
-
----
-
-# 🙌 Thank You
-
-Every contribution matters.
-
-Even a documentation typo helps.
-
-Let’s build something serious.
-
-
