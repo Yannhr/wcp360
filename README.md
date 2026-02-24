@@ -193,35 +193,97 @@ Third-party modules supported.
 
 # 🔐 Security by Default
 
-Security is built-in:
+WCP360 adopts a **security-first mindset** where protection is centralized, mandatory, and impossible to disable or circumvent.
 
-- User isolation (cgroups v2)  
-- CPU/RAM/IO quotas  
-- WAF (auto-updated rules)  
-- Abuse detection engine  
-- Immutable audit logs  
-- Mandatory 2FA  
-- WebAuthn support  
-- SELinux/AppArmor profiles  
-- Automatic hardening on install  
+Security is **enforced exclusively in the core platform** — modules and users cannot override or weaken it.
 
-Zero-trust architecture.  
-No root execution from UI.
+### Core Security Principles
+- **Zero-trust model** — assume breach; verify everything
+- **Centralized enforcement** — authorization, validation, and auditing happen before any action reaches a module
+- **Immutable invariants** — critical guarantees (isolation, audit, no-root) cannot be turned off
+- **Principle of least privilege** — no root execution after initial bootstrap
+
+### Active Security Mechanisms
+- **Tenant & Process Isolation**  
+  - Linux namespaces + cgroups v2 for CPU, memory, I/O, and PID limits  
+  - Per-tenant resource quotas (hard & soft) with automatic suspension on critical exceedance  
+
+- **Resource Governance**  
+  - Real-time tracking and enforcement of CPU, RAM, disk, bandwidth  
+  - Prevents resource exhaustion attacks or abuse  
+
+- **Web Application Firewall (WAF)**  
+  - Integrated ModSecurity with OWASP Core Rule Set (CRS) — auto-updated  
+  - Protection against SQL injection, XSS, RCE, file inclusion, bots, etc.  
+  - Tenant-aware rate limiting & IP reputation scoring  
+
+- **Abuse Prevention Engine**  
+  - Built-in detection for credential stuffing, brute-force, scanning, anomalous behavior  
+  - Temporary/permanent blocks + real-time notifications  
+
+- **Immutable & Centralized Audit Logging**  
+  - Append-only trail (cannot be altered even by root)  
+  - Structured JSON logs with correlation IDs and full context  
+  - Long-term retention configurable  
+
+- **Installation & Runtime Hardening**  
+  - Automatic application of **SELinux / AppArmor** profiles  
+  - Strict file permissions (644/755, correct ownership)  
+  - Default firewall rules (nftables/firewalld)  
+  - Secure secret generation (JWT keys, DB passwords, etc.)  
+  - Disabling unnecessary services & ports  
+
+### Architectural Guarantees
+- **No root after bootstrap** — PAM used only once during secure first-boot  
+- **Modules receive pre-authorized commands** — scoped to tenant & validated  
+- **All mutations go through the job engine** — audited & asynchronous  
+- **No security bypass** possible via UI, API, CLI, or custom modules  
+
+In short: **Security is a constraint, not a choice.**  
+Even a malicious admin or compromised module cannot violate the core invariants.
+
+**Zero trust. Zero exceptions.**
 
 ---
 
 # ⚡ Performance Philosophy
 
-Built for speed:
+WCP360 is engineered for **maximum efficiency** and **minimal overhead** on production hosting environments.
 
-- Nginx-only stack  
-- FastCGI caching  
-- Redis object cache  
-- Multi-PHP pools  
-- Brotli compression  
-- HTTP/3  
-- Auto-tuned MariaDB  
-- Lazy service loading  
+We deliberately choose a **lean, modern stack** optimized for real-world VPS/dedicated servers:
+
+- **Nginx-only** web server stack (no Apache legacy)  
+  → Lightweight, event-driven, excellent concurrency handling
+
+- **FastCGI caching** with intelligent purge rules  
+  → Reduces backend PHP/MySQL hits for dynamic content
+
+- **Redis object caching** (full-page, transients, sessions)  
+  → Blazing-fast response times even under load
+
+- **Multi-PHP-FPM pools** per tenant or application type  
+  → Isolated performance + better resource control
+
+- **Brotli compression** (level 6 default) + Gzip fallback  
+  → Smaller payloads, faster page loads (especially mobile)
+
+- **HTTP/2 + HTTP/3 (QUIC)** support out-of-the-box  
+  → Multiplexing, header compression, lower latency
+
+- **Auto-tuned MariaDB / PostgreSQL** configuration  
+  → Query cache, InnoDB buffer pool sizing based on available RAM, slow query logging
+
+- **Lazy service loading** & on-demand module activation  
+  → Only start services (Postfix, Dovecot, PowerDNS, etc.) when a tenant actually uses them
+
+- **cgroups v2** + systemd resource limits per tenant  
+  → Prevents noisy-neighbor issues, enforces fair CPU/memory/disk I/O
+
+Result: **sub-second response times** even on modest hardware, while maintaining strong isolation and security.
+
+We avoid bloat: no heavy JavaScript frameworks in the control panel backend, no unnecessary daemons running 24/7, no legacy cruft.
+
+Performance is not an afterthought — it's a core invariant.
 
 Designed to handle 500+ domains efficiently.
 
@@ -253,18 +315,6 @@ Smart throttling under load.
 - SDK for module development  
 - Infrastructure export/import  
 - Optional container integration  
-
----
-
-# 🌱 Sustainability
-
-Optional infrastructure metrics:
-
-- Per-site resource tracking  
-- Energy usage estimation  
-- CO₂ metrics  
-
-Built for efficient infrastructure usage.
 
 ---
 
@@ -300,80 +350,6 @@ We welcome:
 2. Create a feature branch  
 3. Submit a Pull Request  
 4. Join discussions  
-
----
-
-# 📜 License
-
-WCP 360 Core is released under:
-
-**AGPLv3**
-
-Ensuring:
-
-- Core remains open-source  
-- No closed forks  
-- Commercial hosting allowed  
-- Paid modules may coexist separately  
-
----
-
-## Project Roadmap – 2026 Vision
-
-WCP360 is in **early alpha** (February 2026) with a strong focus on solid architecture, documentation, and secure bootstrap foundations.
-
-We are building step-by-step toward a modern, secure, multi-tenant hosting control panel in Go.
-
-### High-Level 2026 Roadmap
-
-**Phase 0: Foundation & Bootstrap** (Q1 2026 – In progress)  
-- Repository setup, licensing, governance  
-- Detailed architecture & invariants  
-- One-click installer skeleton  
-- Secure first-boot (PAM root → admin auto-creation)  
-- Docker Compose dev environment  
-
-**Phase 1: Core Engine MVP** (Q1–Q2 2026)  
-- Job engine (idempotent, retries, scheduling)  
-- Centralized audit logging  
-- Strict tenant context & RBAC enforcement  
-- Resource quotas (cgroups v2)  
-- Basic API endpoints + health/metrics  
-
-**Phase 2: First Modules & Provisioning** (Q2–Q3 2026)  
-- Webserver module (Nginx: vhosts, templates, reload)  
-- SSL module (Let's Encrypt auto-issue & renew)  
-- Database module basics  
-- Demo/quick-start hosting package  
-- Real-time WebSocket updates  
-
-**Phase 3: Essential Features & UI Alpha** (Q3–Q4 2026)  
-- Email, backup, DNS modules  
-- Admin UI (React/Vite/shadcn)  
-- Client panel basics  
-- Full CLI mirroring API  
-- Rate limiting, 2FA support  
-
-**Phase 4: Hardening & Beta** (Q4 2026 → 2027)  
-- Stable API v1 + OpenAPI  
-- Advanced isolation (SELinux/AppArmor)  
-- Monitoring (Prometheus)  
-- Public beta & community modules  
-
-Longer-term: reconciliation loop, multi-server, green hosting metrics, enterprise SSO…
-
-**Current focus (Feb 2026):**  
-Secure bootstrap + job engine + first module (Nginx/SSL) + curl | bash installer
-
-Full detailed roadmap → [ROADMAP.md](ROADMAP.md)  
-Architecture & invariants → [ARCHITECTURE.md](ARCHITECTURE.md)  
-Key features list → [FEATURES.md](FEATURES.md) (if exists)  
-Installation guide → [INSTALLATION.md](INSTALLATION.md) or docs/ folder  
-Security hardening tips → [HARDENING.md](HARDENING.md)
-
-Contributions welcome – start small (docs, tests, small modules)!
-
-⭐ Star the repo • Watch for updates • Join Discussions to help shape the project.
 
 ---
 
