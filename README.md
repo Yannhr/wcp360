@@ -133,12 +133,31 @@ It is an infrastructure control layer for serious server operators.
 
 # 🐧 Supported OS
 
-- Ubuntu LTS  
-- Debian Stable  
+WCP 360 is engineered to run as close to the Linux kernel as possible. We focus on distributions that guarantee long-term stability, enterprise-grade security, and native performance.
 
-Linux-native.  
-No abstraction layers.  
-No compatibility bloat.
+### 🔹 Tier 1: Debian-based (Production Ready)
+* **Ubuntu LTS** (20.04, 22.04, 24.04+)
+* **Debian Stable** (11 Bullseye, 12 Bookworm+)
+
+### 🔹 Tier 2: Enterprise Linux (RHEL Family - Incoming)
+* **AlmaLinux 9+** (The new industry standard for professional hosting)
+* **Rocky Linux 9+** (Community-driven enterprise stability)
+* **CloudLinux** (Advanced tenant isolation for shared hosting environments)
+
+### 🔹 Tier 3: Specialized (Roadmap)
+* **Alpine Linux** (For ultra-minimalist, high-performance edge deployments)
+
+---
+
+**Linux-native.** **No abstraction layers.** **No compatibility bloat.**
+
+> [!IMPORTANT]
+> **Architecture Note:** We exclusively target systems utilizing **systemd** and **cgroups v2**. This ensures native resource isolation and hardware-level performance without the overhead of third-party virtualization layers.
+
+---
+
+### Why these Operating Systems?
+By expanding support to the **RHEL family (Alma/Rocky)**, WCP 360 positions itself as a direct, high-performance alternative to legacy proprietary panels, enabling seamless migrations for enterprise-scale infrastructures.
 
 ---
 
