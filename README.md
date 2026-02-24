@@ -90,44 +90,42 @@ Built with:
 
 # 🎯 Mission
 
-To build a:
+Our mission is to engineer a high-performance infrastructure control layer designed for the modern web. We are moving away from bloated legacy software to provide a platform that is:
 
-- Faster  
-- More secure  
-- Lightweight  
-- Fully modular  
-- Linux-native  
-- Cloud-scalable  
+* **⚡ Faster** – Optimized binaries and event-driven architecture.
+* **🛡️ More Secure** – Zero-trust security model and hardened kernel integration.
+* **🪶 Lightweight** – Minimal resource footprint to maximize your hardware's potential.
+* **🧩 Fully Modular** – Install only what you need; extend everything else.
+* **🐧 Linux-Native** – No heavy abstraction; direct interaction with systemd and cgroups v2.
+* **☁️ Cloud-Scalable** – Built to grow from a single node to a distributed cluster.
 
-infrastructure control platform engineered for modern systems.
-
-WCP 360 is not a legacy hosting panel.  
-It is an infrastructure control layer for serious server operators.
+> [!TIP]
+> **WCP 360 is not just another legacy hosting panel.** It is a professional-grade **infrastructure control layer** built for serious server operators who demand precision and reliability.
 
 ---
 
 # 🧱 Target Infrastructure
 
-## 🖥 VPS Servers
+WCP 360 is optimized for diverse environments, ensuring peak performance regardless of the underlying hardware.
 
-- Low footprint  
-- Smart CPU/RAM allocation  
-- Minimal overhead  
-- High-density hosting  
+### 🖥️ VPS Servers
+* **Ultra-Low Footprint:** Designed to run efficiently even on entry-level instances.
+* **Intelligent Resource Allocation:** Smart CPU/RAM slicing via cgroups v2.
+* **High-Density Hosting:** Maximize the number of tenants per node without overhead.
 
-## 🏢 Dedicated Servers
+### 🏢 Dedicated Servers
+* **Hardware-Level Tuning:** Direct optimization for bare-metal performance.
+* **Enterprise Storage:** Advanced MariaDB/PostgreSQL tuning for high I/O workloads.
+* **Hardened Security:** Full utilization of hardware-assisted security features.
 
-- Hardware-level optimization  
-- Advanced MariaDB tuning  
-- High I/O workloads  
-- Enterprise-grade security  
+### ☁️ Cloud & Scalable Instances (Upcoming Versions)
+* **API-First Design:** Full RESTful API for seamless integration with external tools (In progress).
+* **Cluster-ready Architecture:** Roadmap includes multi-node management and centralized state synchronization.
+* **Multi-node Orchestration:** Future support for scaling across multiple geographic regions.
+* **Infrastructure as Code (IaC):** Designed for Terraform and Ansible compatibility in upcoming releases.
 
-## ☁️ Cloud & Scalable Instances
-
-- API-first architecture  
-- Cluster-ready roadmap  
-- Multi-node orchestration (planned)  
-- Infrastructure automation compatibility  
+> [!NOTE]
+> The Cloud & Scalability features are the core focus of our **v3.0 roadmap**. We are currently perfecting the standalone core before moving to distributed orchestration.
 
 ---
 
