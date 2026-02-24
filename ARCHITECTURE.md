@@ -120,6 +120,19 @@ Modules operate through the core engine.
 - Module management
 - Security configuration
 - System monitoring
+- Migration tool (cPanel → WCP360)
+- Account cloning
+- Snapshot system
+- Per-user PHP version switching
+- Cron job management
+- Git deployment integration
+- Staging environments
+- Malware scanner
+- Auto-healing services
+- Webhooks system
+- API rate limiting per tenant
+- Storage driver abstraction (local / object / NFS)
+- Audit log integrity hashing
 
 ## 👤 wpanel/ (Client)
 
