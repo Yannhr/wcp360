@@ -1,237 +1,112 @@
-# ⚙️ WCP360 CLI Command Reference
+# ⌨️ WCP360 CLI Unified Interface
 
-The `wcp360` CLI is the official command-line interface for managing WCP360.
+WCP360 is controlled via a single, statically compiled Go binary. The command `wcp` (symlink to `/opt/wcp360/bin/wcp360`) provides a hierarchical CLI designed for speed, security, and automation.
 
-It provides full control over:
+## 🚀 Core Service Lifecycle
+Management of the `wcpd` system daemon.
 
-- Core system
-- Users & tenants
-- Domains
-- Databases
-- Email
-- Backups
-- Modules
-- Security
-- Monitoring
-- Cluster (future)
-
-The CLI is designed as a thin wrapper over the REST API and follows a modular structure.
+| Command | Description |
+| :--- | :--- |
+| `wcp start` | Initialise and start the core daemon. |
+| `wcp stop` | Graceful shutdown of all services and loops. |
+| `wcp restart` | Full service cycle (Stop -> Start). |
+| `wcp reload` | Hot-reload configurations without dropping connections. |
+| `wcp status` | Real-time status of the daemon and worker pools. |
+| `wcp health` | Deep diagnostic of kernel requirements (PSI, cgroups). |
 
 ---
 
-# 🧠 Core System Commands
+## ⚙️ Configuration & Diagnostics
+Management of `/etc/wcp360/` and system health.
 
-## Service Management
+| Command | Description |
+| :--- | :--- |
+| `wcp config show` | Display active configuration (merging YAML + Defaults). |
+| `wcp config set <k> <v>` | Update a specific configuration key. |
+| `wcp config validate` | Check syntax and logic of configuration files. |
+| `wcp doctor` | Run full system check (Permissions, Ports, Kernel). |
+| `wcp logs` | Stream consolidated `zap` structured logs. |
+| `wcp audit` | Search and export signed audit trails. |
 
-```bash
-wcp360 start
-wcp360 stop
-wcp360 restart
-wcp360 reload
-wcp360 status
-wcp360 health
-Configuration
-wcp360 config show
-wcp360 config set <key> <value>
-wcp360 config validate
-wcp360 config reload
-Diagnostics
-wcp360 doctor
-wcp360 logs
-wcp360 metrics
-wcp360 audit
-👤 User & Account Management
-User Lifecycle
-wcp360 user create
-wcp360 user delete
-wcp360 user suspend
-wcp360 user unsuspend
-wcp360 user reset-password
-wcp360 user set-quota
-wcp360 user info
-wcp360 user list
-Role & Permissions (RBAC)
-wcp360 role create
-wcp360 role delete
-wcp360 role assign
-wcp360 role permissions
-Reseller Management
-wcp360 reseller create
-wcp360 reseller delete
-wcp360 reseller usage
-wcp360 reseller set-limits
-🌐 Domain Management
-wcp360 domain add
-wcp360 domain remove
-wcp360 domain suspend
-wcp360 domain unsuspend
-wcp360 domain list
-DNS
-wcp360 dns list <domain>
-wcp360 dns add <domain>
-wcp360 dns delete <domain>
-SSL
-wcp360 ssl issue <domain>
-wcp360 ssl renew <domain>
-wcp360 ssl revoke <domain>
-🗄 Database Management
-wcp360 db create
-wcp360 db delete
-wcp360 db list
-wcp360 db user create
-wcp360 db user delete
-wcp360 db user grant
-wcp360 db backup
-wcp360 db restore
+---
 
-Supported engines:
+## 👤 User & Account Management (RBAC & Isolation)
+Orchestration of hosting environments and systemd-slices.
 
-MariaDB
+### User Lifecycle
+* `wcp user create` : Provision new user, `/srv/www/` root, and cgroup.
+* `wcp user delete` : Atomic wipe of user data and system presence.
+* `wcp user suspend` / `unsuspend` : Freeze/Thaw user processes via cgroup signals.
+* `wcp user set-quota` : Define hard/elastic limits for CPU, RAM, and Disk.
 
-PostgreSQL
+### RBAC & Resellers
+* `wcp role [create|assign|permissions]` : Manage fine-grained access.
+* `wcp reseller [create|delete|set-limits]` : Manage sub-account environments.
 
-📬 Email Management
-wcp360 mail create
-wcp360 mail delete
-wcp360 mail password
-wcp360 mail forward
-wcp360 mail autoresponder
-wcp360 mail list
-📦 Backup Management
-wcp360 backup create
-wcp360 backup list
-wcp360 backup restore
-wcp360 backup delete
-wcp360 backup schedule
-wcp360 backup verify
 
-Supports:
 
-Local storage
+---
 
-S3-compatible storage
+## 🌐 Domain & Network Services
+Managing the `wcp-gateway` and connectivity.
 
-Incremental backups
+### Domains & SSL
+* `wcp domain [add|remove|list]` : Manage virtual hosts and proxy routes.
+* `wcp ssl [issue|renew|revoke]` : Full ACME / Let's Encrypt automation.
 
-🌍 Web Server Module
-wcp360 webserver enable
-wcp360 webserver disable
-wcp360 webserver reload
-wcp360 webserver test-config
-wcp360 webserver status
+### DNS (Local or Remote)
+* `wcp dns [add|delete|list]` : Manage records (Native or Cloudflare/PowerDNS).
 
-Features:
+---
 
-Dynamic Nginx config generation
+## 🗄️ Database Management
+Engines supported: **MariaDB**, **PostgreSQL**.
 
-Safe reload mechanism
+* `wcp db [create|delete|list]` : Manage database instances.
+* `wcp db user [create|grant]` : Database-level user permissions.
+* `wcp db [backup|restore]` : Dump and import tools.
 
-Multi-PHP-FPM pools
+---
 
-HTTP/2 & HTTP/3 support
+## 📬 Email Infrastructure
+* `wcp mail [create|delete|list]` : Mailbox management.
+* `wcp mail [password|forward]` : Settings and aliases.
+* `wcp mail autoresponder` : Sieve-based automated replies.
 
-🔐 Security Commands
-2FA (Optional)
-wcp360 security 2fa enable
-wcp360 security 2fa disable
-wcp360 security 2fa status
-WAF & Protection
-wcp360 security waf enable
-wcp360 security waf disable
-wcp360 security rate-limit set
-wcp360 security firewall rules
-wcp360 security scan
-📊 Monitoring & Metrics
-wcp360 metrics show
-wcp360 metrics export
-wcp360 alerts list
-wcp360 alerts acknowledge
-wcp360 system status
-🔌 Module Management
-wcp360 module install
-wcp360 module enable
-wcp360 module disable
-wcp360 module remove
-wcp360 module list
-wcp360 module update
+---
 
-Modules may include:
+## 📦 Backup Management
+Supports: **Local**, **S3-Compatible**, **Incremental**.
 
-Web server
+* `wcp backup create` : Snapshot website + DB + Meta.
+* `wcp backup schedule` : Setup CRON-based automated backups.
+* `wcp backup verify` : Check integrity of stored archives.
 
-Database
+---
 
-Email
+## 🌍 Web Server Module
+Features: **Nginx Dynamic Generation**, **Multi-PHP-FPM**, **HTTP/3**.
 
-Backup
+* `wcp webserver [enable|disable]` : Manage the web serving layer.
+* `wcp webserver reload` : Apply new vhost configs safely.
+* `wcp webserver test-config` : Dry-run for Nginx/Proxy configurations.
 
-DNS
+---
 
-Future marketplace plugins
+## 🔐 Security & Monitoring
+* `wcp security 2fa [enable|status]` : Multi-factor for Admin/User.
+* `wcp security firewall rules` : Manage NFTables rules.
+* `wcp security waf [enable|disable]` : ModSecurity / Rate-limiting control.
+* `wcp metrics show` : Real-time resource usage (Exportable to Prometheus).
 
-🧱 Cluster Management (Future)
-wcp360 cluster init
-wcp360 cluster join
-wcp360 cluster leave
-wcp360 cluster status
-wcp360 cluster remove-node
-🖥 Relationship With Web Interfaces
-wcpanel/ (Admin / Reseller)
 
-Maps to:
 
-user
+---
 
-reseller
+## 🔌 Module & Cluster (Future-Proofing)
+* `wcp module [install|enable|list]` : Extend WCP360 with plugins.
+* `wcp cluster [init|join|leave]` : Transform to multi-node architecture.
 
-module
+---
 
-webserver
-
-security
-
-cluster
-
-Global metrics
-
-wpanel/ (Client)
-
-Maps to:
-
-domain
-
-dns
-
-db
-
-mail
-
-backup
-
-ssl
-
-Personal metrics
-
-🧰 Global Flags
---json        Output in JSON format
---verbose     Enable verbose logging
---debug       Enable debug mode
---dry-run     Simulate action
---config      Specify config file
-
-Example:
-
-wcp360 user create --json --dry-run
-🧠 Design Philosophy
-
-CLI mirrors API structure
-
-Every command maps to an API endpoint
-
-Consistent naming conventions
-
-Modular subcommand architecture
-
-Safe-by-default behavior
-
-Optional 2FA (configurable per user or global)
+## 🚀 Technical Bootstrap (Bash)
