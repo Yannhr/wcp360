@@ -1,23 +1,34 @@
-# 🚀 WCP 360  
+# 🚀 WCP360  
 ### The Next-Generation Linux-Native Web Control Platform
 
-[![License: AGPLv3](https://img.shields.io/badge/license-AGPLv3-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-active%20development-orange)]()
-[![Platform](https://img.shields.io/badge/platform-Debian%20%7C%20Ubuntu-green)]()
-[![Architecture](https://img.shields.io/badge/architecture-Linux--native-black)]()
-[![Modular](https://img.shields.io/badge/modular-yes-success)]()
-[![Cloud Ready](https://img.shields.io/badge/cloud-ready-blueviolet)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Early%20Alpha-orange)](https://github.com/Webcontrolpanel360/wcp360)
+[![Platform](https://img.shields.io/badge/Platform-Debian%20%7C%20Ubuntu-green)](https://github.com/Webcontrolpanel360/wcp360)
+[![Architecture](https://img.shields.io/badge/Architecture-Linux--native-black)](ARCHITECTURE.md)
+[![Modular](https://img.shields.io/badge/Modular-Yes-success)](ARCHITECTURE.md)
 [![GitHub stars](https://img.shields.io/github/stars/Webcontrolpanel360/wcp360?style=social)](https://github.com/Webcontrolpanel360/wcp360/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/Webcontrolpanel360/wcp360?style=social)](https://github.com/Webcontrolpanel360/wcp360/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/Webcontrolpanel360/wcp360)](https://github.com/Webcontrolpanel360/wcp360/issues)
 
 ---
 
-## 🌍 What is WCP 360?
+## 🌍 What is WCP360?
 
-**WCP 360 (Web Control Panel 360)** is a next-generation, **Linux-native** infrastructure control platform. It moves beyond the limitations of legacy hosting panels to provide a high-performance orchestration layer for modern server environments.
+**WCP360** is a **modern, Linux-native infrastructure control platform** built from scratch to replace legacy panels like cPanel/WHM.
 
-WCP 360 isn't just a UI; it's a comprehensive ecosystem designed to manage the full lifecycle of web infrastructure with precision and speed.
+It delivers:
+- **Blazing performance** — pure Go backend, Nginx-native, event-driven
+- **Rock-solid security** — zero-trust, immutable core, strong tenant isolation (cgroups v2)
+- **True modularity** — install only what you need, extend anything
+- **Minimal footprint** — runs efficiently on VPS, dedicated servers, and cloud
+- **Future-proof design** — API-first, cluster-ready, IaC compatible
+
+WCP360 is **not** just another hosting panel — it's a **high-precision control plane** for serious operators who demand speed, security, and extensibility without legacy bloat.
+
+### Licensing & Editions
+
+- **Open-Source Core** — MIT License  
+  Free forever for personal use, development, and production.  
+  Full source code, modules, and community contributions welcome.
+
 
 ---
 
@@ -33,119 +44,177 @@ WCP 360 isn't just a UI; it's a comprehensive ecosystem designed to manage the f
 
 ---
 
-### 💎 Core Pillars
+# 💎 Core Pillars
 
-WCP 360 scales seamlessly from independent hosting providers to enterprise-grade infrastructure operators, built on four foundational pillars:
+WCP360 is built on four uncompromising pillars that make it faster, safer, and more future-proof than legacy control panels.
 
-* **⚡ Performance-First:** Low-latency execution with an event-driven, Nginx-native core.
-* **🔐 Security by Design:** Zero-Trust architecture with centralized enforcement and tenant isolation (cgroups v2).
-* **🧩 Modular Agility:** A lean core with powerful features delivered through hot-swappable modules and plugins.
-* **🐧 Linux-Native:** No bloat, no heavy abstractions—just direct, efficient interaction with the OS.
+- **⚡ Performance-First**  
+  Event-driven Go core + Nginx-native stack → sub-second responses, ultra-low overhead, and high tenant density even on modest VPS.
 
+- **🔐 Security by Design**  
+  Zero-trust architecture with centralized enforcement, immutable audit trail, rootless runtime after bootstrap, and strict tenant isolation via cgroups v2 + namespaces.
 
+- **🧩 Modular Agility**  
+  Lean, immutable core + hot-swappable modules → install only what you need today, extend tomorrow without touching the foundation.
 
-### 🚀 Built For Modern Workloads
+- **🐧 Linux-Native**  
+  No heavy abstractions, no Perl/PHP bloat — direct integration with systemd, cgroups v2, nftables, and kernel primitives for maximum efficiency and control.
 
-WCP 360 is engineered to handle:
-* **Hosting Management:** Advanced domain, SSL, and multi-PHP lifecycle automation.
-* **Server Administration:** Deep system control without leaving the platform.
-* **Infrastructure Control:** Granular resource governance and process isolation.
-* **Cloud Scalability:** Designed to evolve from single-node setups to distributed clusters.
+These pillars are **non-negotiable invariants** — not optional features.
+
+# 🚀 Built For Modern Workloads
+
+WCP360 is engineered from the ground up for today's (and tomorrow's) real hosting realities:
+
+- **Hosting Management**  
+  Fully automated domain, SSL (ACME v2), multi-PHP pools, and tenant lifecycle — no manual scripting or legacy rebuilds.
+
+- **Server Administration**  
+  Deep system visibility and control (resource governance, process isolation, audit logs) directly in the platform — no SSH roulette.
+
+- **Infrastructure Control**  
+  Granular per-tenant quotas, cgroup slicing, and runtime enforcement — prevent abuse, crashes, and noisy neighbors.
+
+- **Cloud & Scalability Ready**  
+  API-first design + cluster-ready foundation (v2.0+) — start on a single VPS, grow to multi-node orchestration without rewriting your stack.
+
+> [!TIP]  
+> WCP360 is **not cPanel/WHM with a fresh coat of paint**.  
+> It is a clean-sheet, modern **infrastructure control plane** — built for operators who want performance, security, and extensibility without legacy tax.
+
+v1.0 delivers a rock-solid single-node foundation.  
+v2.0–v3.0 unlocks distributed clusters, IaC integration, and advanced orchestration.
+
+Serious operators choose WCP360 for **precision where legacy panels fail**.
 
 ---
 
+# 🧩 Tech Stack Overview
+
 **Built by serious operators, for serious operators.**
 
-## 🧩 Tech Stack Overview
+WCP360 is **pure Go** at its core — no JavaScript frameworks, no Node.js runtime in the first release.  
+The initial version prioritizes a **rock-solid, minimal, secure backend** before adding any web UI layer.
 
 ### ⚙ Core Layer
 [![Go](https://img.shields.io/badge/Core-Go-00ADD8?logo=go&logoColor=white)](https://go.dev/)
-[![Rust](https://img.shields.io/badge/Security-Rust-black?logo=rust&logoColor=white)](https://www.rust-lang.org/)
-
-### 🌐 Interface Layer
-[![React](https://img.shields.io/badge/UI-React-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![Node.js](https://img.shields.io/badge/Runtime-Node.js-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
-
-### 🗄 Data Layer
-[![MariaDB](https://img.shields.io/badge/Database-MariaDB-003545?logo=mariadb&logoColor=white)](https://mariadb.org/)
-[![Redis](https://img.shields.io/badge/Cache-Redis-DC382D?logo=redis&logoColor=white)](https://redis.io/)
-
-### 🌍 Infrastructure Layer
-[![Nginx](https://img.shields.io/badge/Web%20Server-Nginx-009639?logo=nginx&logoColor=white)](https://nginx.org/)
-[![PHP-FPM](https://img.shields.io/badge/PHP-FPM-777BB4?logo=php&logoColor=white)](https://www.php.net/)
-[![Containers](https://img.shields.io/badge/Containers-Podman-892CA0?logo=podman&logoColor=white)](https://podman.io/)
-[![Rootless](https://img.shields.io/badge/Mode-Rootless-success)]()
-[![Quadlet](https://img.shields.io/badge/Orchestration-Quadlet-blue)]()
-[![Systemd](https://img.shields.io/badge/Integration-systemd-444444)]()
+- Single-language backend: everything in **Go 1.23+**
+- Event-driven, concurrent, low-memory footprint
+- Idempotent job queue (Asynq + Redis)
+- Strict tenant isolation via cgroups v2 & systemd slices
 
 ### 🔐 Security Layer
 [![Coraza](https://img.shields.io/badge/WAF-Coraza-red)](https://coraza.io/)
 [![OWASP CRS](https://img.shields.io/badge/OWASP-CRS-critical)](https://owasp.org/www-project-modsecurity-core-rule-set/)
+- Built-in WAF (Coraza + OWASP Core Rule Set auto-update)
+- Append-only immutable audit trail
+- Zero-trust model: no root after bootstrap
+- PAM one-time bootstrap → non-root daemon
+- Signed internal communication (Unix sockets or mTLS)
 
-### 📦 Packaging
-[![OCI-like](https://img.shields.io/badge/Modules-OCI--like-blueviolet)]()
-[![Signed Manifests](https://img.shields.io/badge/Integrity-Signed%20Manifests-success)]()
+### 🌐 Gateway & Reverse Proxy
+[![Nginx](https://img.shields.io/badge/Edge-Nginx-009639?logo=nginx&logoColor=white)](https://nginx.org/)
+- Single public entry point (80/443 only)
+- HTTP/3, Brotli, FastCGI caching
+- Tenant-aware vhost generation
+- Automatic HTTPS (ACME v2 / Let's Encrypt)
 
+### 🗄 Data & State Layer
+[![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-336791?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Redis](https://img.shields.io/badge/Jobs+Cache-Redis-DC382D?logo=redis&logoColor=white)](https://redis.io/)
+- PostgreSQL (preferred) for persistent state & audit
+- Redis for job queue, caching, sessions
+- Schema migrations (golang-migrate)
 
+### 🌍 Infrastructure & Runtime
+[![Systemd](https://img.shields.io/badge/Orchestration-systemd-444444)](https://systemd.io/)
+[![Podman](https://img.shields.io/badge/Containers-Podman-892CA0?logo=podman&logoColor=white)](https://podman.io/)
+[![Rootless](https://img.shields.io/badge/Mode-Rootless-success)]()
+- Rootless Podman / Quadlet for optional containerized modules
+- Native systemd integration (slices, services, timers)
+- FHS-compliant layout: `/opt/wcp360`, `/etc/wcp360`, `/var/lib/wcp360`
 ---
 
 # 🎯 Mission
 
-Our mission is to engineer a high-performance infrastructure control layer designed for the modern web. We are moving away from bloated legacy software to provide a platform that is:
+WCP360 is engineered to be the **high-performance, secure, and modular infrastructure control layer** for modern hosting.
 
-* **⚡ Faster** – Optimized binaries and event-driven architecture.
-* **🛡️ More Secure** – Zero-trust security model and hardened kernel integration.
-* **🪶 Lightweight** – Minimal resource footprint to maximize your hardware's potential.
-* **🧩 Fully Modular** – Install only what you need; extend everything else.
-* **🐧 Linux-Native** – No heavy abstraction; direct interaction with systemd and cgroups v2.
-* **☁️ Cloud-Scalable** – Built to grow from a single node to a distributed cluster.
+We are replacing bloated, legacy control panels with a platform that prioritizes:
 
-> [!TIP]
-> **WCP 360 is not just another legacy hosting panel.** It is a professional-grade **infrastructure control layer** built for serious server operators who demand precision and reliability.
+- **⚡ Speed** — Optimized Go binaries + event-driven architecture  
+- **🛡️ Security** — Zero-trust model + hardened kernel integration (cgroups v2, SELinux/AppArmor)  
+- **🪶 Lightweight** — Minimal resource usage to maximize hardware efficiency  
+- **🧩 Modular** — Install only the features you need; extend freely  
+- **🐧 Linux-Native** — Direct interaction with systemd, cgroups v2, and kernel primitives  
+- **☁️ Scalable** — Designed to grow from a single VPS to multi-node clusters  
 
----
-
-# 🧱 Target Infrastructure
-
-WCP 360 is optimized for diverse environments, ensuring peak performance regardless of the underlying hardware.
-
-### 🖥️ VPS Servers
-* **Ultra-Low Footprint:** Designed to run efficiently even on entry-level instances.
-* **Intelligent Resource Allocation:** Smart CPU/RAM slicing via cgroups v2.
-* **High-Density Hosting:** Maximize the number of tenants per node without overhead.
-
-### 🏢 Dedicated Servers
-* **Hardware-Level Tuning:** Direct optimization for bare-metal performance.
-* **Enterprise Storage:** Advanced MariaDB/PostgreSQL tuning for high I/O workloads.
-* **Hardened Security:** Full utilization of hardware-assisted security features.
-
-### ☁️ Cloud & Scalable Instances (Upcoming Versions)
-* **API-First Design:** Full RESTful API for seamless integration with external tools (In progress).
-* **Cluster-ready Architecture:** Roadmap includes multi-node management and centralized state synchronization.
-* **Multi-node Orchestration:** Future support for scaling across multiple geographic regions.
-* **Infrastructure as Code (IaC):** Designed for Terraform and Ansible compatibility in upcoming releases.
-
-> [!NOTE]
-> The Cloud & Scalability features are the core focus of our **v3.0 roadmap**. We are currently perfecting the standalone core before moving to distributed orchestration.
+> [!TIP]  
+> WCP360 is **not another legacy hosting panel**.  
+> It is a professional-grade **infrastructure control plane** built for serious operators who demand precision, reliability, and performance.
 
 ---
 
-# 🐧 Supported OS
+# 🧱 Target Infrastructure – Better Than cPanel/WHM
 
-WCP 360 is engineered to run as close to the Linux kernel as possible. We focus on distributions that guarantee long-term stability, enterprise-grade security, and native performance.
+WCP360 is built to **replace legacy panels like cPanel/WHM** with a faster, lighter, more secure, and truly modern control layer — without the bloat, Perl legacy, or massive resource overhead.
 
-### 🔹 Tier 1: Debian-based (Production Ready)
-* **Ubuntu LTS** (20.04, 22.04, 24.04+)
-* **Debian Stable** (11 Bullseye, 12 Bookworm+)
+It runs efficiently on **VPS**, **dedicated servers**, and **cloud instances**, with dramatically better density, performance, and security isolation.
 
-### 🔹 Tier 2: Enterprise Linux (RHEL Family - Incoming)
-* **AlmaLinux 9+** (The new industry standard for professional hosting)
-* **Rocky Linux 9+** (Community-driven enterprise stability)
-* **CloudLinux** (Advanced tenant isolation for shared hosting environments)
+### 🖥️ VPS & Entry-Level Servers (Ideal for Shared Hosting & Resellers)
+- **Ultra-low footprint** — runs comfortably on 1–2 GB RAM VPS (vs cPanel's 4–8 GB minimum)  
+- **Intelligent tenant slicing** — cgroups v2 + systemd slices guarantee fair CPU/RAM/IO (no more "noisy neighbor" crashes)  
+- **High-density hosting** — 3–5× more tenants per node than cPanel/WHM without slowdowns  
+- **Rootless & secure by default** — no persistent root execution, no dangerous suPHP/mod_php
 
-### 🔹 Tier 3: Specialized (Roadmap)
-* **Alpine Linux** (For ultra-minimalist, high-performance edge deployments)
+### 🏢 Dedicated & Bare-Metal Servers (Enterprise & High-Performance Hosting)
+- **Direct hardware optimization** — leverages full CPU cores, NVMe I/O, and RAM bandwidth  
+- **Database tuned for scale** — MariaDB/PostgreSQL with huge buffers, query cache, and I/O scheduler tuning  
+- **Hardware security features** — TPM 2.0 integration, Secure Boot enforcement, hardware RNG for crypto  
+- **No legacy cruft** — drops Perl, PHP-based backend, old Apache dependencies — pure Go + Nginx
 
+### ☁️ Cloud & Scalable Deployments (v2.0+ Vision – Single-Node Core First)
+- **API-first from day one** — full REST/GraphQL surface for automation (Terraform, Ansible, Pulumi, Kubernetes operators)  
+- **Cluster-ready foundation** — agent model + shared token/state sync (roadmap for multi-node)  
+- **Horizontal scaling** — add nodes, distribute tenants, central orchestration (v3.0+)  
+- **Cloud-native friendly** — rootless Podman/Quadlet support, OCI-like module packaging  
+
+> [!IMPORTANT]  
+> **v1.0 focuses on single-node perfection** — rock-solid core, strong isolation, and essential modules (web + SSL + database).  
+> **Cloud/multi-node & advanced orchestration** are roadmap priorities after v1.0 stability (v2.0–v3.0).
+
+**Why WCP360 is better than cPanel/WHM in 2026**
+- 5–10× lower resource usage  
+- True zero-trust & immutable audit trail  
+- No Perl/PHP bloat — modern Go + Nginx stack  
+- cgroups v2 isolation (not just user quotas)  
+- One-click modules (no EasyApache rebuilds)  
+- Designed for VPS density & cloud automation from the start  
+
+Serious operators choose WCP360 for **precision, speed, security, and future-proofing** — not legacy tax.
+
+---
+
+# 🐧 Supported Operating Systems
+
+WCP360 is built close to the Linux kernel for maximum performance and security.  
+We prioritize distributions with long-term stability, enterprise hardening, and native tooling.
+
+### 🔹 Tier 1 – Production Ready (Recommended)
+- **Ubuntu LTS** (22.04, 24.04+)  
+- **Debian Stable** (12 Bookworm+)  
+
+### 🔹 Tier 2 – Enterprise / Hosting-Focused (Strong Support Planned)
+- **AlmaLinux 9+** (industry standard for professional hosting)  
+- **Rocky Linux 9+** (community-driven RHEL clone)  
+- **CloudLinux** (advanced shared hosting isolation features)  
+
+### 🔹 Tier 3 – Specialized / Future Support
+- **Alpine Linux** (ultra-minimal containers & edge deployments)  
+- **Fedora Server** (testing newer kernel features)  
+
+> [!IMPORTANT]  
+> We focus on **long-term supported** releases only.  
+> Bleeding-edge or short-lifecycle distros (e.g., Arch, Gentoo) are not supported.
 ---
 
 **Linux-native.** **No abstraction layers.** **No compatibility bloat.**
@@ -162,50 +231,56 @@ By expanding support to the **RHEL family (Alma/Rocky)**, WCP 360 positions itse
 
 # 🏗 Architecture Overview
 
-## 🧠 Minimal Core
+WCP360 is built around a **minimal, immutable core** that enforces security, isolation, and extensibility from the ground up.
 
-The core is:
+## 🧠 Minimal Core (The Foundation)
 
-- Immutable  
-- Hardened  
-- Event-driven  
-- Fully extensible  
+The core is intentionally small, hardened, and non-negotiable:
 
-### Core Responsibilities
+- **Immutable** — cannot be modified or bypassed  
+- **Hardened** — drops root, enforces zero-trust, central audit  
+- **Event-driven** — asynchronous jobs via queue (idempotent & retryable)  
+- **Fully extensible** — everything beyond basics is a pluggable module  
 
-- User & domain lifecycle management  
-- Resource isolation (cgroups v2 + systemd slices)  
-- Dynamic Nginx config generation  
-- SSL automation (ACME v2)  
-- WAF integration (Coraza + OWASP CRS)  
-- REST API Gateway  
-- Plugin management  
-- Security enforcement  
+### Core Responsibilities (v1.0 focus)
 
-Everything is modular.  
-Nothing is hardcoded.
+- Multi-tenant lifecycle & strict RBAC  
+- Resource governance (cgroups v2 + systemd slices)  
+- Tenant-scoped API gateway  
+- Centralized security enforcement (WAF rules, rate limiting, validation)  
+- Job orchestration & audit trail (append-only)  
+- Module loading & lifecycle management  
+- Secure bootstrap (PAM root → admin auto-creation)  
+
+**Nothing is hardcoded.**  
+All hosting features (web, db, email, dns…) are external modules.
 
 ---
 
-# 🧩 Modular Ecosystem
+# 🧩 Modular Ecosystem (v1.0 & Roadmap)
 
-Modules are installable packages.  
-Install only what you need.
+Modules are **self-contained Go packages** that implement a simple interface.  
+Activate only what you need — keep the attack surface and resource usage minimal.
 
-| Module | Purpose | Key Features |
-|--------|---------|-------------|
-| 🌐 **Web Server** | Website hosting stack | Nginx-first, multi-PHP, HTTP/3, Brotli |
-| 🗄 **Database** | DB management | MariaDB & PostgreSQL provisioning |
-| 📧 **Email** | Mail server | Postfix, Dovecot, Rspamd, Webmail |
-| 🌍 **DNS** | Zone management | Bind / PowerDNS |
-| 💾 **Backup** | Backup & restore | Incremental, S3, remote restore |
-| 📁 **File Manager** | Web-based file access | Editor, permission view |
-| 📊 **Monitoring** | Observability | Prometheus integration |
-| 🔄 **Git Deploy** | CI/CD | Git-based deployment hooks |
-| 🔐 **Security Suite** | Advanced protection | WAF, abuse detection, audit logs |
+| Icon | Module              | Purpose                          | Key Features (v1.0 focus)                     | Status (Feb 2026) |
+|------|---------------------|----------------------------------|-----------------------------------------------|-------------------|
+| 🌐   | **Web Server**      | Website & app hosting            | Nginx vhost generation, multi-PHP, HTTP/3, Brotli | Priority #1 – Planned |
+| 🗄   | **Database**        | Database provisioning            | MariaDB / PostgreSQL, user/db creation, privileges | High – Planned    |
+| 🔐   | **SSL**             | Certificate automation           | ACME v2 (Let's Encrypt), auto-renewal, Nginx reload | High – Planned    |
+| 📧   | **Email**           | Mail hosting stack               | Postfix + Dovecot + Rspamd basics             | Medium – Planned  |
+| 🌍   | **DNS**             | Zone & record management         | PowerDNS / Bind driver, API records           | Medium – Planned  |
+| 💾   | **Backup**          | Data protection                  | Incremental backups, S3-compatible            | Medium – Planned  |
+| 📊   | **Monitoring**      | Observability                    | Prometheus metrics export                     | Future            |
+| 🔄   | **Git Deploy**      | Automated deployments            | Git push → build/deploy hooks                 | Future            |
+| 📁   | **File Manager**    | Browser-based file access        | Editor, permissions, upload/download          | Future            |
 
+**Third-party & custom modules**  
+Anyone can build new modules (e.g. Redis, Node.js support, Cloudflare integration, Docker apps).  
+→ See the simple Module interface in [ARCHITECTURE.md](ARCHITECTURE.md)
 
-Third-party modules supported.
+**v1.0 Goal**  
+Deliver a rock-solid core + the essential trio: **Web Server + SSL + Database** — enough for real tenant websites with HTTPS auto-provisioning.
+
 
 ---
 
@@ -263,78 +338,51 @@ Even a malicious admin or compromised module cannot violate the core invariants.
 **Zero trust. Zero exceptions.**
 
 ---
-
 # ⚡ Performance Philosophy
 
-WCP360 is engineered for **maximum efficiency** and **minimal overhead** on production hosting environments.
+WCP360 is engineered for **maximum efficiency** and **minimal overhead** — even on modest VPS or dedicated servers.
 
-We deliberately choose a **lean, modern stack** optimized for real-world VPS/dedicated servers:
+We deliberately choose a **lean, modern, no-bloat stack** that delivers real-world results:
 
-- **Nginx-only** web server stack (no Apache legacy)  
-  → Lightweight, event-driven, excellent concurrency handling
+- **Nginx-only web stack** (no Apache legacy)  
+  → Event-driven, handles thousands of concurrent connections with very low memory
 
-- **FastCGI caching** with intelligent purge rules  
-  → Reduces backend PHP/MySQL hits for dynamic content
+- **Intelligent FastCGI caching** with automatic purge on content changes  
+  → Reduces dynamic backend hits (PHP/MySQL) by 5–10× on average
 
-- **Redis object caching** (full-page, transients, sessions)  
-  → Blazing-fast response times even under load
+- **Redis object caching** (full-page, transients, sessions, queries)  
+  → Sub-50 ms response times under moderate load
 
-- **Multi-PHP-FPM pools** per tenant or application type  
-  → Isolated performance + better resource control
+- **Isolated multi-PHP-FPM pools** per tenant or app type  
+  → Predictable performance + fine-grained resource control
 
-- **Brotli compression** (level 6 default) + Gzip fallback  
-  → Smaller payloads, faster page loads (especially mobile)
+- **Brotli compression** (default level 6) + Gzip fallback  
+  → 20–30 % smaller payloads than Gzip alone, especially beneficial for mobile
 
-- **HTTP/2 + HTTP/3 (QUIC)** support out-of-the-box  
-  → Multiplexing, header compression, lower latency
+- **HTTP/2 + HTTP/3 (QUIC)** enabled out-of-the-box  
+  → Multiplexing, header compression, significantly lower latency
 
-- **Auto-tuned MariaDB / PostgreSQL** configuration  
-  → Query cache, InnoDB buffer pool sizing based on available RAM, slow query logging
+- **Auto-tuned MariaDB / PostgreSQL** based on available RAM  
+  → Dynamic buffer pools, query cache, slow-query logging + auto-EXPLAIN
 
-- **Lazy service loading** & on-demand module activation  
-  → Only start services (Postfix, Dovecot, PowerDNS, etc.) when a tenant actually uses them
+- **Lazy service loading & on-demand activation**  
+  → Postfix, Dovecot, PowerDNS, etc. only start when a tenant actually uses them
 
-- **cgroups v2** + systemd resource limits per tenant  
-  → Prevents noisy-neighbor issues, enforces fair CPU/memory/disk I/O
+- **cgroups v2 + systemd resource limits** per tenant  
+  → Strict CPU / RAM / I/O caps → eliminates noisy-neighbor problems
 
-Result: **sub-second response times** even on modest hardware, while maintaining strong isolation and security.
+**Expected v1.0 results**  
+Sub-second response times and high tenant density — even on 2–4 GB RAM VPS — while preserving strong isolation and security.
 
-We avoid bloat: no heavy JavaScript frameworks in the control panel backend, no unnecessary daemons running 24/7, no legacy cruft.
+**We reject bloat**  
+- No heavy JavaScript frameworks in the control backend  
+- No unnecessary daemons running 24/7  
+- No legacy Perl/PHP cruft in the core  
 
-Performance is not an afterthought — it's a core invariant.
+**Performance is not a feature — it's a non-negotiable invariant.**
 
-Designed to handle 500+ domains efficiently.
 
----
-
-# 🧠 Resource Management
-
-Native alternative to CloudLinux LVE:
-
-- cgroups v2  
-- systemd slices  
-- CPUQuota  
-- MemoryHigh / MemoryMax  
-- IO weight  
-- Anti fork-bomb task limits  
-
-Dynamic quotas per hosting plan.  
-Smart throttling under load.
-
----
-
-# 🧪 Developer-First Design
-
-- CLI management (`wcp360`)  
-- Full REST API  
-- WebSocket updates  
-- Git-based deployment  
-- CI/CD hooks  
-- SDK for module development  
-- Infrastructure export/import  
-- Optional container integration  
-
----
+---  
 
 # 📦 Installation
 
@@ -348,43 +396,6 @@ cd wcp360/installation
 chmod +x install-wcp360.sh
 sudo ./install-wcp360.sh
 ```
-
----
-
-# 🤝 Contributing
-
-We welcome:
-
-- Backend developers  
-- Frontend developers  
-- Security engineers  
-- DevOps specialists  
-- Documentation contributors  
-- Plugin developers  
-
-### How to contribute
-
-1. Fork the repository  
-2. Create a feature branch  
-3. Submit a Pull Request  
-4. Join discussions  
-
----
-
-# 🔥 Why WCP 360?
-
-Because hosting panels should be:
-
-- Transparent  
-- Modular  
-- Secure  
-- Efficient  
-- Developer-friendly  
-- Scalable  
-
-Not bloated.  
-Not locked.  
-Not overpriced.
 
 ---
 
