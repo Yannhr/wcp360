@@ -1,98 +1,85 @@
-# WCP360 Roadmap
+# 🗺️ WCP360 Technical Roadmap v1.0
 
-This roadmap outlines the planned development phases for **WCP360** — a modern, API-first, multi-tenant hosting control platform built in Go.
+This roadmap outlines the technical path to build WCP360 from an empty repository to a production-ready, Go-native hosting control panel.
 
-The project is currently in **early alpha stage** (as of February 2026): strong focus on architecture, documentation, installation foundation, and modular design. No production-ready features yet, but the foundation is being laid for rapid iteration.
+---
 
-We aim for a **minimal viable product (MVP)** that demonstrates core multi-tenant isolation, automated provisioning, and basic hosting capabilities within 2026.
+## 🏗️ Priority 1: Core Scaffolding (The Skeleton)
+*Goal: Establish the FHS-compliant environment and the Go binary lifecycle.*
 
-## Guiding Principles
-- Core remains immutable and non-pluggable
-- Security centralized (never delegated to modules)
-- Strict tenant isolation (RBAC + cgroups v2 + namespaces)
-- API as single source of truth
-- Idempotent, asynchronous operations via job engine
-- Extensibility via modules without compromising guarantees
+- [ ] **Standard Project Layout:** Implement [Golang Standards](https://github.com/golang-standards/project-layout) (`/cmd`, `/internal`, `/pkg`).
+- [ ] **Daemon Lifecycle:** Develop `wcpd` with signal handling (`SIGTERM`, `SIGHUP`) and graceful shutdown.
+- [ ] **Unified Installer:** Bash script to automate:
+    - PostgreSQL 15+ installation & performance tuning.
+    - System user `wcp360` creation.
+    - FHS directory structure (`/opt/wcp360`, `/etc/wcp360`, `/var/lib/wcp360`).
+- [ ] **Configuration Engine:** Implement a YAML/Env provider using `Viper` with strict validation.
 
-## 2026 Roadmap – High-Level Phases
 
-### Phase 0: Foundation & Bootstrap (Q1 2026 – Current)
-**Status: In progress / Mostly done**
 
-- [x] Repository setup & governance files (LICENSE AGPLv3, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY.md)
-- [x] Detailed ARCHITECTURE.md with principles, invariants, module contract
-- [x] Documentation suite: FEATURES.md, HARDENING.md, INSTALLATIONINSTRUCTION.md
-- [x] One-click install script skeleton (`install-wcp360.sh`)
-- [x] Docker Compose for dev environment
-- [x] First-boot architecture (PAM root bootstrap, auto-admin, system_initialized flag)
-- [ ] Secure bootstrap implementation (core/bootstrap package)
-- [ ] Minimal CLI commands (`wcp360 setup`, `wcp360 admin create`)
+---
 
-**Milestone goal**: A fresh server can run the installer and reach a "initialized but empty" state.
+## 🔐 Priority 2: Security & Identity Layer
+*Goal: Secure the panel and implement the First-Boot mode.*
 
-### Phase 1: Core Engine MVP (Q1–Q2 2026)
-**Status: Planning / Early implementation**
+- [ ] **PAM Integration:** CGO bindings or Go-wrapper for `/etc/pam.d/common-auth` to verify root credentials.
+- [ ] **First-Boot State Machine:** Logic to detect `system_initialized = false` and route to the Bootstrap API.
+- [ ] **Relational Schema:** Deploy the GORM-based schema for Roles (RBAC), Tenants, and Domains.
+- [ ] **JWT Provider:** Secure token issuance for API and CLI authentication.
 
-- Job engine (Asynq/Redis-based, idempotent tasks, retries, scheduling)
-- Centralized audit logging (append-only, immutable)
-- Tenant lifecycle + strict context propagation
-- RBAC + permission matrix enforcement
-- Resource governance (quotas via cgroups v2 + systemd slices)
-- API v0 (health endpoints, basic CRUD for tenants/users)
-- System state persistence & reconciliation basics
 
-**Milestone goal**: Core can enqueue jobs, enforce policies, and log actions without modules.
 
-### Phase 2: First Functional Modules & Provisioning (Q2–Q3 2026)
-**Status: Planned**
+---
 
-- **Web Server Module** (Nginx): vhost generation, templates, graceful reload, zero-downtime
-- **SSL Module** (ACME v2 / Let's Encrypt): auto-issuance, renewal jobs, cert management
-- **Database Module** (PostgreSQL/MariaDB): DB/user provisioning, privileges, backups hook
-- Basic demo/quick-start: auto-provision default hosting package on first-boot
-- WebSocket real-time (job progress, logs, metrics)
+## 🚀 Priority 3: Workload Orchestration (The MVP)
+*Goal: Automated provisioning of web and system resources.*
 
-**Milestone goal**: A user can create a domain → get auto-HTTPS site with basic hosting (static or PHP).
+- [ ] **Linux User Provisioning:** Automated creation of isolated system users and home directories.
+- [ ] **Nginx Config Engine:** Go-template based generator for optimized HTTP/2 & HTTP/3 vHosts.
+- [ ] **PHP-FPM Manager:** Dynamic generation of FastCGI Unix sockets and isolated pools per tenant.
+- [ ] **ACME/SSL Client:** Automated SSL lifecycle management via Let's Encrypt.
 
-### Phase 3: Essential Hosting Features & UI Alpha (Q3–Q4 2026)
-**Status: Planned**
 
-- Email Module (Postfix/Dovecot/Rspamd basics)
-- Backup Module (incremental, S3/local)
-- DNS Module (PowerDNS or API drivers)
-- Admin UI (React/Vite + shadcn/ui): login, dashboard, tenant management
-- Client UI basics (wpanel): domain list, resource usage
-- CLI full mirroring of key API endpoints
-- Rate limiting, 2FA/WebAuthn enforcement
 
-**Milestone goal**: Resellers can manage tenants; clients can self-serve basic hosting.
+---
 
-### Phase 4: Stability, Security & Extensibility (Q4 2026 – 2027)
-**Status: Future**
+## 📊 Priority 4: Resource Isolation (Cgroups v2)
+*Goal: Multi-tenancy stability and "Noisy Neighbor" prevention.*
 
-- API v1 stable + OpenAPI spec + SDKs (Go, JS/TS)
-- Plugin registry (public module hub)
-- Advanced isolation (AppArmor/SELinux profiles, network namespaces)
-- Monitoring integration (Prometheus metrics, alerts)
-- Cluster mode beta (multi-server federation)
-- Public beta release + community modules
+- [ ] **Cgroups v2 Implementation:** Direct interface with `/sys/fs/cgroup` to enforce:
+    - `memory.high` / `memory.max` limits.
+    - `cpu.max` (quota and period).
+    - `io.max` (BPS/IOPS limits).
+- [ ] **Disk Quotas:** Implement XFS Project Quotas or ext4 user-level quotas for `/srv/www/`.
+- [ ] **PSI Monitoring:** Integrate Pressure Stall Information for real-time resource health metrics.
 
-**Milestone goal**: Production-viable for small VPS providers or agencies.
 
-## Longer-Term Vision (2027+)
-- Full reconciliation loop (desired vs actual state)
-- Energy/CO₂ tracking for green hosting
-- Multi-cloud drivers (AWS, Hetzner, DigitalOcean APIs)
-- Mobile app / progressive web app
-- Enterprise features (LDAP/SSO, audit export, compliance reports)
 
-## Current Priorities (February 2026)
-1. Finish first-boot bootstrap (PAM + auto-admin + demo package)
-2. Implement job engine + audit logging
-3. Build Webserver + SSL modules first
-4. Add GitHub Actions CI (lint, test, docker build)
-5. Publish curl | bash installer
+---
 
-Contributions are welcome — start with docs, tests, or small modules!
+## 🛠️ Priority 5: Management & Observability
+*Goal: External tools and data management.*
 
-See also: [ARCHITECTURE.md](ARCHITECTURE.md) | [FEATURES.md](FEATURES.md) | [INSTALLATIONINSTRUCTION.md](INSTALLATIONINSTRUCTION.md)
+- [ ] **Database Manager:** Driver-based orchestration for MariaDB/PostgreSQL (DB/User creation).
+- [ ] **Internal REST API:** Decouple the backend from the frontend via a JSON API.
+- [ ] **Emergency CLI:** `wcp` command-line utility for low-level system overrides.
+- [ ] **Health Dashboard:** Basic monitoring of system metrics (Load, RAM, Disk).
+
+---
+
+## 📈 Development Status Matrix
+
+| Component | Priority | Complexity | Status |
+| :--- | :--- | :--- | :--- |
+| **System Skeleton** | 🔴 Critical | Medium | 📅 Planned |
+| **PAM Auth** | 🔴 Critical | High | 📅 Planned |
+| **Nginx Logic** | 🟠 High | Medium | 📅 Planned |
+| **Cgroups v2** | 🟠 High | High | 📅 Planned |
+| **Web UI** | 🟡 Medium | Low | 📅 Planned |
+
+---
+
+### 🏛️ Architectural Guarantees
+1. **Go-Native:** Avoid external shell wrappers; use direct Linux API interactions where possible.
+2. **Atomics:** All system changes must support rollback (Idempotency).
+3. **FHS Compliance:** Respect the Filesystem Hierarchy Standard for all data and binaries.
