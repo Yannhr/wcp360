@@ -1,264 +1,60 @@
-# 🚀 WCP360 — Feature Overview
+# 🚀 WCP360 Key Features
 
-WCP360 is a modern, modular, API-first web hosting control panel built with Go and a TypeScript frontend.
-
-It is designed as a secure, extensible, multi-tenant alternative to legacy control panels.
-
-The platform is divided into two main interfaces:
-
-- `wcpanel/` → Admin / Reseller interface (WHM-like)
-- `wpanel/` → Client / End-user interface (cPanel-like)
-
-Both interfaces share the same backend core and API layer.
+WCP360 is not just a hosting panel; it's a high-performance orchestration engine built in Go. It focuses on automation, security, and the intelligent use of system resources.
 
 ---
 
-# 🧠 Core Platform Features
-
-## 🔹 API-First Architecture
-
-- Versioned REST API (`/api/v1`)
-- WebSocket real-time events
-- Structured JSON responses
-- Modular service architecture
-- CLI fully mapped to API
-
-## 🔹 Multi-Tenant Engine
-
-- Per-account isolation
-- Resource quotas (CPU, RAM, Disk, Bandwidth)
-- Filesystem separation
-- Service pool separation
-- Scoped permissions enforcement
-
-## 🔹 Role-Based Access Control (RBAC)
-
-- Root
-- Admin
-- Reseller
-- Client
-- API token roles
-
-Fine-grained permission matrix for modules and resources.
+## 🧠 Smart Resource Management (The "Elastic" Core)
+* **Elastic Resource Allocation:** Unlike static limits, WCP360 uses a predictive loop to borrow idle CPU/RAM and give it to sites experiencing traffic spikes (Bursting).
+* **Native cgroups v2 Integration:** No kernel overhead. Hard and soft limits are enforced directly by the Linux kernel.
+* **PSI-Based Monitoring:** Real-time detection of I/O, CPU, and Memory pressure to rebalance the server before performance drops.
+* **Instant Resource Reclaiming:** Resources are returned to the pool immediately after a peak ends.
 
 ---
 
-# 🖥 wcpanel/ — Admin / Reseller Features
-
-## 🌍 Global Dashboard
-
-- Server health overview
-- Active services monitoring
-- Account statistics
-- Resource usage summary
-- System alerts
-
-## 👤 Account Management
-
-- Create / edit / delete users
-- Suspend / unsuspend accounts
-- Assign quotas
-- Assign roles
-- Bulk operations
-- Reseller account limits
-
-## 🔧 Module Management
-
-- Install / enable / disable modules
-- Version tracking
-- Update modules
-- Future marketplace support
-
-## 🌐 Web Server Control
-
-- Nginx configuration generation
-- Safe config validation & reload
-- Multi-PHP-FPM pools
-- HTTP/2 & HTTP/3 support
-- Brotli compression support
-
-## 🛡 Security Controls
-
-- Optional 2FA per user
-- Rate limiting
-- WAF integration (Coraza ready)
-- Audit log viewer
-- Firewall rule management
-- Login monitoring
-
-## 📊 System Monitoring
-
-- Service status (Web, DB, Mail)
-- Resource graphs
-- Prometheus metrics endpoint
-- Logs viewer
-- Alerts management
+## ⚡ High-Performance Web Stack
+* **Dynamic Nginx Engine:** Automated generation of high-performance Nginx configurations with HTTP/2 and HTTP/3 (QUIC) support.
+* **Multi-PHP-FPM Manager:** Supports multiple PHP versions running in isolated pools per user.
+* **Fast-Path Gateway:** A single Go-based HTTPS entry point that handles routing, SSL termination, and rate-limiting.
+* **Zero-Downtime Reload:** Configurations are validated and reloaded without dropping active connections.
 
 ---
 
-# 👤 wpanel/ — Client / End-User Features
-
-## 📊 Personal Dashboard
-
-- Account resource usage
-- Active domains
-- Notifications
-- Task progress
-
-## 📂 File Manager
-
-- Upload / download files
-- Folder creation
-- File editing
-- Permission management
-- Archive extract / compress
-
-## 🌐 Domain Management
-
-- Add / remove domains
-- Subdomains
-- DNS record management:
-  - A
-  - AAAA
-  - CNAME
-  - MX
-  - TXT
-  - SRV
-
-## 🔐 SSL Management
-
-- Let's Encrypt automation
-- Custom certificates
-- Auto renewal
-- Certificate status viewer
-
-## 🗄 Database Management
-
-- Create / delete databases
-- Manage DB users
-- Grant privileges
-- Import / export SQL
-- MariaDB support
-- PostgreSQL support
-
-## 📬 Email Management
-
-- Create mailboxes
-- Delete mailboxes
-- Forwarders
-- Auto responders
-- Password reset
-
-## 📦 Backup System
-
-- On-demand backups
-- Scheduled backups
-- Local storage
-- S3-compatible storage
-- Restore functionality
-
-## 📈 Resource Monitoring
-
-- CPU usage graph
-- Memory usage graph
-- Disk usage graph
-- Bandwidth usage graph
-- Historical trends
+## 🛡️ Security & Isolation (Zero-Trust)
+* **Three-Tier Isolation:** Strict separation between System (Root), Panel (Web), and Client (Workload) domains.
+* **Isolated Namespaces:** Every customer website runs in its own mount and network namespace.
+* **Kernel Hardening:** Built-in profiles for AppArmor, SELinux, and Seccomp to restrict dangerous system calls.
+* **Automated SSL (ACME):** Native Let's Encrypt integration with automatic DNS/HTTP-01 challenges and renewal.
+* **Immutable Audit Trail:** All administrative actions are cryptographically signed and stored for compliance.
 
 ---
 
-# 🔐 Security Features
-
-- Optional 2FA (TOTP support planned)
-- Secure session handling
-- API token authentication
-- Audit logging (append-only design)
-- Rate limiting
-- Brute-force detection (planned)
-- No-root execution model
-- Systemd service hardening
+## 🗄️ Database & Email Ecosystem
+* **Multi-Engine DB Support:** Native management for MariaDB and PostgreSQL.
+* **Automated DB Backups:** Scheduled snapshots with local or remote (S3/FTP) storage.
+* **Modern Email Stack:** Integrated Postfix/Dovecot management with SPF, DKIM, and DMARC automation.
+* **Webmail Sandbox:** Run webmail interfaces (Roundcube/SnappyMail) in isolated environments.
 
 ---
 
-# 📦 Module System
-
-WCP360 supports a modular architecture.
-
-Planned modules:
-
-- Web server (Nginx-first)
-- Database (MariaDB, PostgreSQL)
-- Email (Postfix, Dovecot)
-- Backup (Restic-based)
-- DNS (PowerDNS/BIND)
-- Future plugin marketplace
-
-Modules support:
-
-- Install
-- Enable
-- Disable
-- Remove
-- Update lifecycle
+## 📦 Intelligent Backup & Recovery
+* **Incremental Backups:** Save space by backing up only changed blocks of data.
+* **S3-Compatible Storage:** Native support for AWS S3, DigitalOcean Spaces, MinIO, and Backblaze.
+* **Atomic Restore:** One-click restoration of website files, databases, and configuration settings.
+* **Integrity Verification:** Automated checksums to ensure your backups are never corrupted.
 
 ---
 
-# 📡 Real-Time Capabilities
-
-WebSockets enable:
-
-- Live metrics streaming
-- Task progress updates
-- System alerts
-- Service state changes
+## 🛰️ Future-Ready Infrastructure
+* **Cluster Management:** Turn multiple servers into a unified hosting cluster (Master/Worker architecture).
+* **Modular Plugin System:** Extend WCP360 using dynamically loaded Go modules or WASM.
+* **Full-Go CLI:** A powerful Cobra-based command line for total automation via SSH or scripts.
+* **Marketplace Ready:** Designed to support a future ecosystem of one-click apps and extensions.
 
 ---
 
-# 🧰 CLI Integration
-
-The `wcp360` CLI mirrors API functionality:
-
-- User management
-- Domain management
-- Database management
-- Backup operations
-- Module control
-- Security configuration
-
-Automation-ready and script-friendly.
-
----
-
-# 📊 Observability & Logging
-
-- Structured JSON logs
-- Log levels (INFO, WARN, ERROR, DEBUG)
-- Prometheus metrics endpoint
-- Grafana dashboard compatibility
-- Audit trail per user
-
----
-
-# 📦 Deployment Options
-
-- Native Go binary
-- Docker container
-- DEB / RPM packages (planned)
-- One-line installer script
-- Auto-update mechanism (planned)
-
----
-
-# 🎯 Design Principles
-
-- Security-first approach
-- Clean modular architecture
-- Strict tenant isolation
-- API-driven design
-- Automation-ready CLI
-- Modern UI stack (TypeScript + React)
-- Performance & scalability focused
-
----
-
-WCP360 aims to become a secure, extensible, high-performance open-source hosting control panel built for modern infrastructure.
+## 🎨 User Experience (Full-Go UI)
+* **Server-Side Rendered (SSR):** Fast, secure, and lightweight interface using Go Templates.
+* **Zero JavaScript Dependency:** No heavy frameworks (React/Vue) needed; pure performance.
+* **Responsive Dashboard:** Optimized for both mobile and desktop management.
+* **Multi-Role RBAC:** Dedicated interfaces for Admins, Resellers, and End-Users.
