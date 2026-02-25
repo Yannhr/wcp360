@@ -1,177 +1,105 @@
-<h1>🔐 WCP360 Hardening Guide</h1>
-This document describes security best practices for deploying WCP360 in production environments.
+# 🔐 WCP360 Hardening & Security Standards
 
-WCP360 is designed with security-first principles, but proper system hardening is mandatory for real-world deployments.
+WCP360 is built with a **Security-First** mindset. Our goal is to minimize the attack surface of the hosting environment through strict isolation and kernel-level enforcement.
 
-<hr />
+---
 
-<h2>1. Runtime Security</h2>
-<h3>Run as Dedicated User</h3>
-Never run WCP360 as root.
-<pre><code>useradd -r -s /usr/sbin/nologin wcp360
-chown -R wcp360:wcp360 /opt/wcp360</code></pre>
-<h3>Systemd Hardening</h3>
-<pre><code>NoNewPrivileges=true
-PrivateTmp=true
-ProtectSystem=strict
-ProtectHome=true
-ProtectControlGroups=true
-ProtectKernelModules=true
-ProtectKernelTunables=true
-RestrictAddressFamilies=AF_INET AF_INET6
-RestrictNamespaces=true
-LockPersonality=true
-MemoryDenyWriteExecute=true</code></pre>
+## 🏗️ 1. Process & Privilege Isolation
 
-<hr />
+### Privilege Dropping (The Bootstrap Rule)
+The `wcp360-core` daemon requires `root` privileges ONLY for the following startup tasks:
+* Binding to privileged ports (443).
+* Configuring `cgroups v2` and `namespaces`.
+* Setting up `nftables` rules.
+* Mounting customer filesystems.
 
-<h2>2. Network Security</h2>
-<h3>Firewall</h3>
-Allow only required ports:
-<ul>
- 	<li>80 (HTTP)</li>
- 	<li>443 (HTTPS)</li>
- 	<li>22 (SSH, restricted)</li>
- 	<li>25 / 465 / 587 (if mail enabled)</li>
-</ul>
-<pre><code>ufw allow 80
-ufw allow 443</code></pre>
-<h3>TLS Enforcement</h3>
-<ul>
- 	<li>Use valid TLS certificates (e.g., Let's Encrypt)</li>
- 	<li>Disable TLS 1.0 / 1.1</li>
- 	<li>Enforce HTTPS redirection</li>
- 	<li>Enable HSTS</li>
-</ul>
+**Action:** Immediately after bootstrap, the daemon drops privileges to the unprivileged `wcp360` system user.
 
-<hr />
+### Three-Tier Domain Separation
+We strictly forbid any communication that bypasses the architectural layers:
+* **System Layer:** Cannot execute user scripts.
+* **Panel Layer:** Cannot read raw database files directly; must use the API.
+* **Client Layer:** Jailed in a "No-Exit" environment (Namespaced).
 
-<h2>3. Authentication Security</h2>
-<h3>Password Policy</h3>
-<ul>
- 	<li>Minimum 12 characters</li>
- 	<li>Uppercase and lowercase letters</li>
- 	<li>At least one number</li>
- 	<li>At least one symbol</li>
- 	<li>Block common passwords</li>
-</ul>
-<h3>Optional 2FA</h3>
-Strongly recommended for:
-<ul>
- 	<li>System administrators</li>
- 	<li>Resellers</li>
- 	<li>API access accounts</li>
-</ul>
+---
 
-<hr />
+## 🛡️ 2. Kernel-Level Protection
 
-<h2>4. API Protection</h2>
-<ul>
- 	<li>Enable rate limiting</li>
- 	<li>Validate JSON payloads strictly</li>
- 	<li>Reject oversized request bodies</li>
- 	<li>Use structured error responses</li>
- 	<li>Use signed API tokens</li>
- 	<li>Rotate API tokens periodically</li>
-</ul>
+### cgroups v2 & Resource Jailing
+Every user is assigned to a specific `systemd.slice`. This prevents:
+* **Fork Bombs:** via `pids.max` limits.
+* **Resource Exhaustion:** via hard memory and CPU limits.
+* **Noisy Neighbors:** via I/O weight balancing.
 
-<hr />
 
-<h2>5. Database Security</h2>
-<ul>
- 	<li>Use strong database credentials</li>
- 	<li>Restrict database access to localhost</li>
- 	<li>Disable remote root login</li>
- 	<li>Rotate database passwords regularly</li>
- 	<li>Use separate database users per tenant when possible</li>
-</ul>
 
-<hr />
+### Namespacing & Chroot
+Customer environments are isolated using:
+* **Mount Namespaces:** Users only see their own `/srv/www/{user}` directory. Common system paths (`/etc`, `/usr`) are mounted as Read-Only.
+* **Network Namespaces (Optional):** Restricts users from seeing local loopback traffic from other customers.
 
-<h2>6. File System Isolation</h2>
-<ul>
- 	<li>Separate tenant home directories</li>
- 	<li>Enforce strict permissions (750 or stricter)</li>
- 	<li>Prevent symlink traversal</li>
- 	<li>Restrict executable permissions</li>
- 	<li>Validate file uploads</li>
- 	<li>Scan uploads if malware module is enabled</li>
-</ul>
+### Landlock & Seccomp
+We use Linux **Landlock** (available in recent kernels) to restrict file access even if a process is compromised.
+* **Seccomp Profiles:** Only allow the minimum necessary syscalls for PHP/Node.js/Static serving.
 
-<hr />
+---
 
-<h2>7. Web Server Hardening (Nginx)</h2>
-<ul>
- 	<li>Disable server_tokens</li>
- 	<li>Enable rate limiting</li>
- 	<li>Configure compression carefully</li>
- 	<li>Protect against request flooding</li>
- 	<li>Enforce strict MIME type handling</li>
- 	<li>Disable directory listing unless required</li>
-</ul>
+## 🌐 3. Network Hardening
 
-<hr />
+### The Gateway Pattern
+* **Zero-Exposed Ports:** Only Port 443 (HTTPS) is open to the WAN.
+* **Internal Sockets:** All communication between the UI and the Core Daemon happens via **Unix Domain Sockets** (`/run/wcp360/wcp.sock`) with 0700 permissions.
+* **NFTables Integration:** WCP360 manages a dynamic firewall that automatically drops brute-force attempts at the kernel level.
 
-<h2>8. Logging &amp; Audit</h2>
-<ul>
- 	<li>Enable append-only audit logs</li>
- 	<li>Store logs outside the web root</li>
- 	<li>Rotate logs regularly</li>
- 	<li>Monitor suspicious activity</li>
- 	<li>Forward logs to centralized logging systems</li>
- 	<li>Protect log integrity (hash chaining recommended)</li>
-</ul>
+### SSL/TLS Standards
+* **Minimum TLS 1.2:** (TLS 1.3 preferred).
+* **HSTS:** Enabled by default on all panel routes.
+* **Automatic ACME:** No manual certificate handling; automated renewal reduces the risk of expired/fake certs.
 
-<hr />
+---
 
-<h2>9. Backup Hardening</h2>
-<ul>
- 	<li>Encrypt backups</li>
- 	<li>Store off-site copies</li>
- 	<li>Protect object storage credentials</li>
- 	<li>Restrict backup access</li>
- 	<li>Test restore procedures regularly</li>
-</ul>
+## 💾 4. Data & Configuration Security
 
-<hr />
+### Filesystem Permissions (FHS Compliance)
+| Path | Owner | Permissions | Why? |
+| :--- | :--- | :--- | :--- |
+| `/etc/wcp360/` | `root` | `0700` | Contains API keys and master secrets. |
+| `/opt/wcp360/bin/` | `root` | `0755` | Prevent tampering with the Go binary. |
+| `/var/lib/wcp360/` | `wcp360`| `0700` | Runtime data protected from other users. |
 
-<h2>10. OS-Level Recommendations</h2>
-<ul>
- 	<li>Keep OS updated</li>
- 	<li>Enable automatic security patches</li>
- 	<li>Use fail2ban</li>
- 	<li>Use SELinux or AppArmor if applicable</li>
- 	<li>Disable unused services</li>
- 	<li>Disable password-based SSH login (use keys)</li>
-</ul>
+### Database Security
+* **Unique Sockets:** Databases are accessed via local sockets where possible.
+* **One User, One DB:** Strict enforcement of the principle of least privilege for SQL users.
 
-<hr />
+---
 
-<h2>11. Supply Chain Security</h2>
-<ul>
- 	<li>Use Go module verification</li>
- 	<li>Run govulncheck regularly</li>
- 	<li>Enable Dependabot</li>
- 	<li>Sign releases</li>
- 	<li>Verify third-party modules</li>
- 	<li>Pin dependency versions</li>
-</ul>
+## 📜 5. Immutable Auditing
+Every administrative action (via CLI or Web) generates a **Signed Audit Log**:
+* Stored in `/var/log/wcp360/audit.json`.
+* Contains: `Timestamp`, `Actor_ID`, `Action`, `Resource_ID`, `IP_Address`.
+* Logs are append-only to prevent attackers from covering their tracks.
 
-<hr />
+---
 
-<h2>🚨 Incident Response</h2>
-<ol>
- 	<li>Isolate the server immediately</li>
- 	<li>Review logs and audit trails</li>
- 	<li>Rotate all credentials</li>
- 	<li>Reissue SSL certificates</li>
- 	<li>Notify affected users</li>
- 	<li>Apply security patches immediately</li>
- 	<li>Investigate root cause before restoring services</li>
-</ol>
+## 🚀 6. Security Maintenance (Bash commands)
+```
+#!/bin/bash
+echo "🔍 Running WCP360 Security Audit..."
 
-<hr />
+# 1. Check for leaking ports
+LEAKING=$(ss -tulpn | grep LISTEN | grep -v ':443' | grep -v '127.0.0.1')
+if [ ! -z "$LEAKING" ]; then
+    echo "⚠️ WARNING: Non-standard ports are exposed publicly!"
+fi
 
-<strong>Following these hardening practices significantly reduces the attack surface of WCP360 in production environments.</strong>
+# 2. Verify Config Permissions
+if [ "$(stat -c %a /etc/wcp360)" -ne "700" ]; then
+    echo "❌ CRITICAL: /etc/wcp360 permissions are too open!"
+fi
 
-&nbsp;
+# 3. Check for cgroups v2
+grep -q "cgroup2" /proc/mounts && echo "✅ cgroups v2 active" || echo "❌ cgroups v2 MISSING"
+
+# 4. Check for PSI (Pressure Stall Information)
+[ -f /proc/pressure/cpu ] && echo "✅ PSI monitoring enabled" || echo "⚠️ PSI disabled (AI scaling limited)"
+```
