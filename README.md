@@ -135,6 +135,30 @@ The initial version prioritizes a **rock-solid, minimal, secure backend** before
 - FHS-compliant layout: `/opt/wcp360`, `/etc/wcp360`, `/var/lib/wcp360`
 ---
 
+## Technology Stack (as designed for v1.0 – February 2026)
+
+| Layer                     | Main Technology                              | Primary Role                                          | Strategic Choice / Notes                                      |
+|---------------------------|----------------------------------------------|-------------------------------------------------------|----------------------------------------------------------------|
+| **Language & Runtime**    | Go 1.23+                                     | Core backend, API, CLI, reconciliation logic          | Single static binary • excellent concurrency • zero external runtime |
+| **User Interface**        | Server-Side Rendering (Go `html/template`) + Tailwind CSS (embedded) | Admin & tenant dashboards                             | Zero client-side JavaScript → drastically reduced attack surface & fast loading |
+| **Web Server (tenants)**  | Nginx (HTTP/3, QUIC, Brotli, FastCGI)        | Hosting customer websites, dynamic vhosts             | Best-in-class TLS/performance • tenant-aware config generation |
+| **Panel Gateway / Proxy** | Go (Gin or chi router)                       | Public entry point (80/443), rate limiting, auth      | Fine-grained control • fast-path critical security            |
+| **Cache, Sessions & Queue** | Redis + Asynq                              | Full-page cache, sessions, background jobs            | Ultra-low latency • reliable retries & priorities              |
+| **Panel Database**        | PostgreSQL                                   | Persistent configuration, users, audit logs           | Strong transactions • JSONB support • reliability              |
+| **Tenant Databases**      | MariaDB + PostgreSQL (auto-provisioned)      | Databases created for customer sites                  | Maximum compatibility (WordPress, Laravel, etc.)               |
+| **Job Queue**             | Asynq (Redis-backed)                         | Async tasks (backups, SSL renewals, malware scans…)   | Monitoring built-in • idempotency & priority queues            |
+| **Resource & Isolation**  | cgroups v2 + systemd slices + namespaces + PSI | Per-tenant CPU/RAM/IO limits & bursting               | Kernel-native • intelligent bursting • very low overhead       |
+| **Web Application Firewall** | Coraza + OWASP Core Rule Set 4.x (auto-update) | Dynamic web protection                             | Advanced scoring • rules kept current                          |
+| **Dynamic Firewall**      | nftables                                     | Tenant-specific rules, geo-blocking, basic anti-DDoS  | Faster & more flexible than firewalld                          |
+| **SSL / Certificates**    | go-acme (Let’s Encrypt) – HTTP-01 + DNS-01   | Automatic issuance & renewal                          | Wildcard + multi-domain support                                |
+| **Audit & Logging**       | Structured JSON + cryptographically signed immutable logs | Full traceability                                  | Immutable • correlation IDs • configurable retention           |
+| **Extensibility**         | Go modules + future WASM plugins             | Adding features without recompiling core              | Hot-swap capability planned                                    |
+| **Installation & Runtime**| Idempotent bash script + systemd             | One-command bootstrap (user, DB, secrets, services)   | Zero manual configuration after install                        |
+
+**Core philosophy**: Go-dominant • kernel-native primitives • zero legacy bloat (no Perl/PHP/Node in the panel itself) • single-binary mindset.
+
+----
+
 # 🎯 Mission
 
 WCP360 is engineered to be the **high-performance, secure, and modular infrastructure control layer** for modern hosting.
