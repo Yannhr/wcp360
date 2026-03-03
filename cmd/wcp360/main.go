@@ -27,6 +27,7 @@ func main() {
     }))
 
     e.File("/", "ui/templates/index.html")
+    e.GET("/ws/terminal", func(c echo.Context) error { terminal.HandleTerminal(c.Response(), c.Request()); return nil })
 
     // API : Stats & Logs
     e.GET("/api/system", func(c echo.Context) error { return c.JSON(http.StatusOK, monitor.GetStats()) })

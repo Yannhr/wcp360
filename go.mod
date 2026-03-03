@@ -4,6 +4,7 @@ go 1.21.0
 
 require (
 	github.com/go-sql-driver/mysql v1.9.3
+	github.com/gorilla/websocket v1.5.3
 	github.com/labstack/echo/v4 v4.11.4
 	github.com/shirou/gopsutil/v3 v3.24.5
 	github.com/stretchr/testify v1.11.1
