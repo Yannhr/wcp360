@@ -50,3 +50,22 @@ func main() {
 
     e.Logger.Fatal(e.Start(":8080"))
 }
+
+    // API : Lire un fichier
+    e.GET("/api/files/read", func(c echo.Context) error {
+        user := c.QueryParam("user")
+        file := c.QueryParam("file")
+        content, _ := filesystem.ReadFileContent(user, file)
+        return c.JSON(http.StatusOK, map[string]string{"content": content})
+    })
+
+    // API : Sauvegarder un fichier
+    e.POST("/api/files/save", func(c echo.Context) error {
+        req := struct { User, File, Content string }{}
+        c.Bind(&req)
+        err := filesystem.SaveFileContent(req.User, req.File, req.Content)
+        if err != nil {
+            return c.JSON(http.StatusInternalServerError, err.Error())
+        }
+        return c.JSON(http.StatusOK, "Saved")
+    })

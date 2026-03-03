@@ -30,3 +30,16 @@ func ListFiles(username string) ([]FileInfo, error) {
     }
     return result, nil
 }
+
+// ReadFileContent lit le contenu d'un fichier texte
+func ReadFileContent(username, filename string) (string, error) {
+    path := filepath.Join("/var/www/wcp360/data/www", username, filename)
+    content, err := os.ReadFile(path)
+    return string(content), err
+}
+
+// SaveFileContent écrit le contenu dans un fichier
+func SaveFileContent(username, filename, content string) error {
+    path := filepath.Join("/var/www/wcp360/data/www", username, filename)
+    return os.WriteFile(path, []byte(content), 0644)
+}
