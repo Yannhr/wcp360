@@ -294,3 +294,24 @@
 
     // Modifier ta fonction updateStats existante pour appeler updateChart(data.cpu, data.memory);
 </script>
+<div id="drop-zone" class="border-2 border-dashed border-slate-600 rounded-xl p-10 text-center hover:border-blue-500 hover:bg-slate-800 transition mb-4">
+    Déposez vos fichiers ici pour les uploader
+</div>
+
+<script>
+const dropZone = document.getElementById('drop-zone');
+
+dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('bg-slate-800'); };
+dropZone.ondragleave = () => { dropZone.classList.remove('bg-slate-800'); };
+
+dropZone.ondrop = async (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    const formData = new FormData();
+    formData.append('file', files[0]);
+
+    await fetch('/api/files/upload', { method: 'POST', body: formData });
+    alert('Fichier envoyé !');
+    loadFiles(); // Rafraîchir la liste
+};
+</script>

@@ -5,23 +5,20 @@ import (
     "path/filepath"
 )
 
+// FileInfo définit la structure d'un fichier pour l'UI
 type FileInfo struct {
     Name  string `json:"name"`
-    IsDir bool   `json:"is_dir"`
     Size  int64  `json:"size"`
+    IsDir bool   `json:"is_dir"`
+    Date  string `json:"date"`
 }
 
-// ListFiles retourne la liste des fichiers et dossiers avec leurs détails
-type FileInfo struct {
-    Name string `json:"name"`
-    Size int64  `json:"size"`
-    IsDir bool  `json:"is_dir"`
-    Time string `json:"time"`
-}
-
+// ListFiles retourne la liste des fichiers et dossiers dans un chemin donné
 func ListFiles(path string) ([]FileInfo, error) {
     entries, err := os.ReadDir(path)
-    if err != nil { return nil, err }
+    if err != nil {
+        return nil, err
+    }
 
     var files []FileInfo
     for _, entry := range entries {
@@ -30,32 +27,13 @@ func ListFiles(path string) ([]FileInfo, error) {
             Name:  entry.Name(),
             Size:  info.Size(),
             IsDir: entry.IsDir(),
-            Time:  info.ModTime().Format("2006-01-02 15:04"),
+            Date:  info.ModTime().Format("2006-01-02 15:04"),
         })
     }
     return files, nil
 }
-// ListFiles lists content of a tenant's web directory
-func ListFiles(username string) ([]FileInfo, error) {
-    root := filepath.Join("./data/www", username)
-    files, err := os.ReadDir(root)
-    if err != nil {
-        return nil, err
-    }
 
-    var result []FileInfo
-    for _, f := range files {
-        info, _ := f.Info()
-        result = append(result, FileInfo{
-            Name:  f.Name(),
-            IsDir: f.IsDir(),
-            Size:  info.Size(),
-        })
-    }
-    return result, nil
-}
-
-// ReadFileContent lit le contenu d'un fichier texte
+// ReadFileContent lit le contenu d'un fichier (pour l'éditeur)
 func ReadFileContent(username, filename string) (string, error) {
     path := filepath.Join("/var/www/wcp360/data/www", username, filename)
     content, err := os.ReadFile(path)
